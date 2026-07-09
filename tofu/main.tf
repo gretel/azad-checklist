@@ -4,9 +4,10 @@
 #
 # Usage:
 #   tofu init                                                    # download providers
-#   tofu apply -var dns_name=azad-checklist-tofu                 # create infra (custom DNS)
+#   tofu apply -var dns_name=azad-checklist-tofu                 # create infra
 #   ./upload.sh "$(tofu output -raw resource_group)" "$(tofu output -raw vm_name)"  # upload assets
-#   curl -k https://azad-checklist-tofu.westeurope.cloudapp.azure.com/  # verify
+#   curl -k "$(tofu output -raw fqdn)"                        # verify
+#   tofu graph | dot -Tpng > graph.png                           # dependency visual
 #   tofu destroy                                                 # tear down
 
 terraform {
@@ -20,6 +21,10 @@ terraform {
       source  = "hashicorp/random"
       version = "~> 3.0"
     }
+    time = {
+      source  = "hashicorp/time"
+      version = "~> 0.12"
+    }
   }
 }
 
@@ -32,7 +37,7 @@ provider "azurerm" {
 variable "location" {
   description = "Azure region"
   type        = string
-  default     = "westeurope"
+  default     = "polandcentral"
 }
 
 variable "dns_name" {
@@ -42,9 +47,9 @@ variable "dns_name" {
 }
 
 variable "vm_size" {
-  description = "Azure VM SKU"
+  description = "Azure VM size (B2ls_v2 cheapest in polandcentral)"
   type        = string
-  default     = "Standard_B1s"
+  default     = "Standard_B2ls_v2"
 }
 
 variable "ssh_public_key_path" {
@@ -81,11 +86,23 @@ resource "azurerm_virtual_network" "main" {
   address_space       = ["10.0.0.0/16"]
 }
 
+# AzureRM provider v4.x has a known bug where resource creation succeeds
+# but the post-create refresh fails with "root object was present, but now absent".
+# time_sleep gives Azure time to propagate before the provider re-reads state.
+# See: https://github.com/hashicorp/terraform-provider-azurerm/issues/26409
+
+resource "time_sleep" "vnet_propagation" {
+  depends_on      = [azurerm_virtual_network.main]
+  create_duration = "15s"
+}
+
 resource "azurerm_subnet" "main" {
   name                 = "subnet-main"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.0.1.0/24"]
+
+  depends_on = [time_sleep.vnet_propagation]
 }
 
 resource "azurerm_public_ip" "main" {
@@ -110,7 +127,7 @@ resource "azurerm_network_security_group" "main" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "80"
-    source_address_prefixes    = ["*"]
+    source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
 
@@ -122,9 +139,14 @@ resource "azurerm_network_security_group" "main" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "443"
-    source_address_prefixes    = ["*"]
+    source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+}
+
+resource "time_sleep" "nsg_propagation" {
+  depends_on      = [azurerm_network_security_group.main]
+  create_duration = "10s"
 }
 
 resource "azurerm_network_interface" "main" {
@@ -154,6 +176,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   size                  = var.vm_size
   admin_username        = "azureuser"
   network_interface_ids = [azurerm_network_interface.main.id]
+  depends_on            = [time_sleep.vnet_propagation, time_sleep.nsg_propagation]
 
   admin_ssh_key {
     username   = "azureuser"

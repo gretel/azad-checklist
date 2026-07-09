@@ -33,6 +33,24 @@ tofu apply                     # provision VM + nginx + self-signed TLS
 curl -k "$(tofu output -raw fqdn)"          # test HTTPS
 # Visit in browser, accept self-signed cert warning
 tofu destroy                   # tear down
+
+#### Visualising the dependency graph
+
+OpenTofu can export a DOT dependency graph and render it as PNG.
+
+```sh
+# Requires Graphviz (dot)
+brew install graphviz
+
+cd tofu
+tofu graph | dot -Tpng > graph.png
+```
+
+`tofu graph` outputs every resource, provider, variable and their
+dependencies. `dot -Tpng` converts the DOT to a PNG image. Open
+graph.png to see how resources connect: why the subnet depends on
+the VNet, why the NIC needs both subnet and NSG, and how cloud-init
+flows into the VM.
 ```
 
 ## License
