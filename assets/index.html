@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBW - AZAD - Checklist</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="top-row">
+    <h1>CBW &mdash; AZAD &mdash; Checklist</h1>
+    <div class="right-group">
+      <div class="src-link">
+        <span class="lang-en"><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104" target="_blank">Official study guide</a></span>
+        <span class="lang-de"><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104" target="_blank">Offizieller Studienleitfaden</a></span>
+        <span class="lang-es"><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104" target="_blank">Guía de estudio oficial</a></span>
+        <span class="lang-ar"><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104" target="_blank">الدليل الرسمي للدراسة</a></span>
+      </div>
+      <div class="lang-toggle">
+        <button id="btnLangEn" class="active" onclick="setLang('en')">EN</button>
+        <button id="btnLangDe" onclick="setLang('de')">DE</button>
+        <button id="btnLangAr" onclick="setLang('ar')">عربي</button>
+        <button id="btnLangEs" onclick="setLang('es')">ES</button>
+        <button id="btnTheme" onclick="toggleTheme()">◐</button>
+        <button id="btnCollapse" onclick="collapseAll()" title="Collapse all">▲</button>
+        <button id="btnExpand" onclick="expandAll()" title="Expand all">▼</button>
+        <button id="btnReset" onclick="resetStorage()" title="Reset saved data">↺</button>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="progress-text" id="progressText"></div>
+<div id="checklistRoot"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/validator@13.15.0/validator.min.js" integrity="sha384-/bU3QHCrx0R0sb/VSPs6EKaoOQeY8AKQlBVe6ZMQiJU8DmSBAhmq/WvCqi0pnS8h" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>

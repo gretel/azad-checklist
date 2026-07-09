@@ -1,0 +1,1517 @@
+[
+  {
+    "nameEn": "Domain 1 — Identities & Governance",
+    "nameDe": "Bereich 1 — Identitäten & Governance",
+    "nameAr": "المجال 1 — الهويات والحوكمة",
+    "nameEs": "Dominio 1 — Identidades y Gobernanza",
+    "weight": "20–25%",
+    "items": [
+      {
+        "titleEn": "1.1 — Manage Entra ID users and groups",
+        "titleDe": "1.1 — Entra ID-Benutzer und -Gruppen verwalten",
+        "titleAr": "1.1 — إدارة مستخدمي ومجموعات Entra ID",
+        "titleEs": "1.1 — Administrar usuarios y grupos de Entra ID",
+        "docs": "https://learn.microsoft.com/en-us/entra/identity/users/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Entra ID > Users</span> – \"+ New user\" vs \"New guest user\"",
+          "<span>Groups</span> – Security vs M365, Assigned vs Dynamic membership",
+          "<span>Licenses > All products</span> – per-user license assignment",
+          "<span>Password reset</span> – enable SSPR for a group",
+          "<strong>Teach:</strong> Two user types (in-directory vs B2B guest)",
+          "Group types, dynamic membership via directory attributes",
+          "License assignment requires Usage Location set first",
+          "SSPR: configure auth methods, number-of-methods required",
+          "+ New user",
+          "New guest user"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Entra ID > Users</span> – \"+ New user\" vs \"New guest user\"",
+          "<span>Groups</span> – Security vs M365, zugewiesen vs dynamische Mitgliedschaft",
+          "<span>Licenses > All products</span> – Lizenzzuweisung pro Benutzer",
+          "<span>Password reset</span> – SSPR für Gruppe aktivieren",
+          "<strong>Teach:</strong> Zwei Benutzertypen (Verzeichnis vs B2B-Gast)",
+          "Gruppentypen, dynamische Mitgliedschaft über Verzeichnisattribute",
+          "Lizenzzuweisung erfordert zunächst Usage Location",
+          "SSPR: Authentifizierungsmethoden konfigurieren",
+          "+ New user",
+          "New guest user"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Entra ID > Users</span> – \"+ مستخدم جديد\" مقابل \"مستخدم ضيف\"",
+          "<span>المجموعات</span> – أمان مقابل M365، عضوية معينة مقابل ديناميكية",
+          "<span>Licenses > All products</span> – تعيين الترخيص لكل مستخدم",
+          "<span>Password reset</span> – تمكين SSPR لمجموعة",
+          "<strong>Teach:</strong> نوعان للمستخدمين (داخل الدليل مقابل ضيف B2B)",
+          "أنواع المجموعات، عضوية ديناميكية عبر سمات الدليل",
+          "يتطلب تعيين الترخيص تعيين موقع الاستخدام أولاً",
+          "SSPR: تكوين طرق المصادقة، عدد الطرق المطلوبة",
+          "+ مستخدم جديد",
+          "مستخدم ضيف جديد"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Entra ID > Usuarios</span> – \"+ Nuevo usuario\" vs \"Nuevo usuario invitado\"",
+          "<span>Grupos</span> – Seguridad vs M365, membresía asignada vs dinámica",
+          "<span>Licencias > Todos los productos</span> – asignación de licencia por usuario",
+          "<span>Restablecimiento de contraseña</span> – habilitar SSPR para un grupo",
+          "<strong>Teach:</strong> Dos tipos de usuario (en directorio vs invitado B2B)",
+          "Tipos de grupo, membresía dinámica mediante atributos de directorio",
+          "La asignación de licencias requiere establecer primero la ubicación de uso",
+          "SSPR: configurar métodos de autenticación, número de métodos requerido",
+          "+ Nuevo usuario",
+          "Nuevo usuario invitado"
+        ]
+      },
+      {
+        "titleEn": "1.2 — Manage Entra ID roles",
+        "titleDe": "1.2 — Entra ID-Rollen verwalten",
+        "titleAr": "1.2 — إدارة أدوار Entra ID",
+        "titleEs": "1.2 — Administrar roles de Entra ID",
+        "docs": "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Entra ID > Roles and administrators</span> – filter by category",
+          "Click <strong>Global Administrator</strong> – Assignments tab",
+          "Assign \"User Administrator\" at tenant scope",
+          "<strong>Teach:</strong> Built-in role categories (Global, User, Helpdesk, Billing)",
+          "PIM for time-bound activation of privileged roles",
+          "Entra roles manage directory only; Azure RBAC is separate",
+          "Global Administrator <strong>≠</strong> Owner",
+          "User Administrator"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Entra ID > Roles and administrators</span> – nach Kategorie filtern",
+          "<strong>Global Administrator</strong> – Registerkarte Zuweisungen",
+          "\"User Administrator\" auf Mandantenbereich zuweisen",
+          "<strong>Teach:</strong> Integrierte Rollenkategorien",
+          "PIM für zeitlich begrenzte Aktivierung privilegierter Rollen",
+          "Entra-Rollen verwalten nur das Verzeichnis; Azure RBAC ist getrennt",
+          "Global Administrator <strong>≠</strong> Owner",
+          "User Administrator"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Entra ID > Roles and administrators</span> – تصفية حسب الفئة",
+          "انقر على <strong>Global Administrator</strong> – تبويب التعيينات",
+          "تعيين \"مسؤول المستخدمين\" على نطاق المستأجر",
+          "<strong>Teach:</strong> فئات الأدوار المضمنة (Global، User، Helpdesk، Billing)",
+          "PIM للتفعيل المحدد زمنياً للأدوار المميزة",
+          "أدوار Entra تدير الدليل فقط؛ Azure RBAC منفصل",
+          "المسؤول العام <strong>≠</strong> المالك",
+          "مسؤول المستخدمين"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Entra ID > Roles y administradores</span> – filtrar por categoría",
+          "Haga clic en <strong>Global Administrator</strong> – pestaña Asignaciones",
+          "Asignar \"User Administrator\" en el ámbito del inquilino",
+          "<strong>Teach:</strong> Categorías de roles integrados (Global, User, Helpdesk, Billing)",
+          "PIM para activación temporal de roles privilegiados",
+          "Los roles de Entra ID gestionan solo el directorio; Azure RBAC es independiente",
+          "Administrador Global <strong>≠</strong> Propietario",
+          "Administrador de Usuarios"
+        ]
+      },
+      {
+        "titleEn": "1.3 — Azure RBAC — role assignments",
+        "titleDe": "1.3 — Azure RBAC — Rollenzuweisungen",
+        "titleAr": "1.3 — Azure RBAC — تعيينات الأدوار",
+        "titleEs": "1.3 — Azure RBAC — asignaciones de roles",
+        "docs": "https://learn.microsoft.com/en-us/azure/role-based-access-control/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>RG > Access control (IAM)</span> – View access tab",
+          "\"+ Add > Add role assignment\": Contributor, principal, scope",
+          "\"Check access\" tab – effective permissions for a user",
+          "<strong>Teach:</strong> Anatomy: principal + role + scope",
+          "Inheritance: MG → Sub → RG → resource",
+          "\"Check access\" resolves inherited + deny assignments",
+          "+ Add > Add role assignment",
+          "Check access",
+          "Check access"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>RG > Access control (IAM)</span> – Registerkarte Zugriff anzeigen",
+          "\"+ Add > Add role assignment\": Contributor, Prinzipal, Bereich",
+          "Registerkarte \"Check access\" – effektive Berechtigungen",
+          "<strong>Teach:</strong> Aufbau: Prinzipal + Rolle + Bereich",
+          "Vererbung: MG → Sub → RG → Ressource",
+          "\"Check access\" löst geerbte + verweigerte Zuweisungen auf",
+          "+ Add > Add role assignment",
+          "Check access",
+          "Check access"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>RG > Access control (IAM)</span> – تبويب عرض الوصول",
+          "\"+ إضافة > إضافة تعيين دور\": مساهم، رئيسي، نطاق",
+          "تبويب \"التحقق من الوصول\" – الصلاحيات الفعلية لمستخدم",
+          "<strong>Teach:</strong> التشريح: رئيسي + دور + نطاق",
+          "التوريث: MG → الاشتراك → RG → المورد",
+          "\"التحقق من الوصول\" يحل التعيينات الموروثة + المرفوضة",
+          "+ إضافة > إضافة تعيين دور",
+          "التحقق من الوصول",
+          "التحقق من الوصول"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>RG > Control de acceso (IAM)</span> – Ver acceso pestaña",
+          "\"+ Agregar > Agregar asignación de rol\": Colaborador, principal, ámbito",
+          "\"Comprobar acceso\" pestaña – permisos efectivos para un usuario",
+          "<strong>Teach:</strong> Anatomía: principal + rol + ámbito",
+          "Herencia: MG → Suscripción → RG → recurso",
+          "\"Comprobar acceso\" resuelve asignaciones heredadas + denegadas",
+          "+ Agregar > Agregar asignación de rol",
+          "Comprobar acceso",
+          "Comprobar acceso"
+        ]
+      },
+      {
+        "titleEn": "1.4 — Azure Policy",
+        "titleDe": "1.4 — Azure Policy",
+        "titleAr": "1.4 — Azure Policy",
+        "titleEs": "1.4 — Azure Policy",
+        "docs": "https://learn.microsoft.com/en-us/azure/governance/policy/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Policy > Overview</span> – compliance state",
+          "<span>Definitions</span> – e.g. \"Allowed locations\" JSON definition",
+          "<span>Assignments</span> – scope, excluded resources, parameters",
+          "<span>Compliance</span> – drill into non-compliant resources",
+          "<strong>Teach:</strong> Definition vs assignment",
+          "Effects: deny, audit, append, modify, deployIfNotExists, auditIfNotExists",
+          "Initiatives = group of policy definitions (e.g. ISO 27001)",
+          "Per-policy, per-resource compliance view with last evaluated time",
+          "Allowed locations"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Policy > Overview</span> – Compliance-Status",
+          "<span>Definitions</span> – z.B. JSON-Definition von \"Allowed locations\"",
+          "<span>Assignments</span> – Bereich, ausgeschlossene Ressourcen, Parameter",
+          "<span>Compliance</span> – nicht konforme Ressourcen aufschlüsseln",
+          "<strong>Teach:</strong> Definition vs Zuweisung",
+          "Effekte: deny, audit, append, modify, deployIfNotExists, auditIfNotExists",
+          "Initiativen = Gruppe von Richtliniendefinitionen (z.B. ISO 27001)",
+          "Compliance-Ansicht pro Richtlinie und Ressource mit Prüfzeit",
+          "Allowed locations"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Policy > Overview</span> – حالة الامتثال",
+          "<span>التعريفات</span> – مثال: تعريف JSON لـ \"المواقع المسموح بها\"",
+          "<span>التعيينات</span> – النطاق، الموارد المستثناة، المعلمات",
+          "<span>الامتثال</span> – تعمق في الموارد غير الممتثلة",
+          "<strong>Teach:</strong> التعريف مقابل التعيين",
+          "التأثيرات: رفض، تدقيق، إلحاق، تعديل، نشرإنوجدم، تدقيقإنوجدم",
+          "المبادرات = مجموعة تعريفات السياسات (مثال: ISO 27001)",
+          "عرض الامتثال لكل سياسة وكل مورد مع وقت آخر تقييم",
+          "المواقع المسموح بها"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Política > Información general</span> – compliance state",
+          "<span>Definiciones</span> – ej. definición JSON de \"Ubicaciones permitidas\"",
+          "<span>Asignaciones</span> – ámbito, recursos excluidos, parámetros",
+          "<span>Cumplimiento</span> – profundizar en recursos no conformes",
+          "<strong>Teach:</strong> Definición vs asignación",
+          "Efectos: denegar, auditar, anexar, modificar, implementarSiNoExiste, auditarSiNoExiste",
+          "Iniciativas = grupo de definiciones de política (ej. ISO 27001)",
+          "Per-política, per-recurso compliance view with last evaluated time",
+          "Ubicaciones permitidas"
+        ]
+      },
+      {
+        "titleEn": "1.5 — Resource locks",
+        "titleDe": "1.5 — Ressourcensperren",
+        "titleAr": "1.5 — أقفال الموارد",
+        "titleEs": "1.5 — Bloqueos de recursos",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>RG > Locks</span> – \"+ Add\": <strong>ReadOnly</strong> vs <strong>Delete</strong>",
+          "Demo: ReadOnly lock → deletion blocked; remove lock → succeeds",
+          "<strong>Teach:</strong> ReadOnly blocks all changes; Delete blocks deletion only",
+          "Locks apply to scoped resource and all children",
+          "Locks override RBAC – even Owner cannot delete",
+          "+ Add"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>RG > Locks</span> – \"+ Add\": <strong>ReadOnly</strong> vs <strong>Delete</strong>",
+          "Demo: ReadOnly-Sperre → Löschung blockiert; entfernen → erfolgreich",
+          "<strong>Teach:</strong> ReadOnly blockiert alle Änderungen; Delete blockiert nur Löschung",
+          "Sperren gelten für den Bereich und alle untergeordneten Ressourcen",
+          "Sperren heben RBAC auf – selbst Owner kann nicht löschen",
+          "+ Add"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>RG > Locks</span> – \"+ إضافة\": <strong>قراءة فقط</strong> مقابل <strong>حذف</strong>",
+          "تجربة: قفل قراءة فقط → الحذف محظور؛ إزالة القفل → ينجح",
+          "<strong>Teach:</strong> قراءة فقط يمنع كل التغييرات؛ حذف يمنع الحذف فقط",
+          "تطبق الأقفال على المورد في النطاق وجميع الموارد التابعة",
+          "الأقفال تتجاوز RBAC – حتى المالك لا يستطيع الحذف",
+          "+ إضافة"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>RG > Bloqueos</span> – \"+ Agregar\": <strong>SoloLectura</strong> vs <strong>Eliminar</strong>",
+          "Demostración: Bloqueo SoloLectura → eliminación bloqueada; quitar bloqueo → exitoso",
+          "<strong>Teach:</strong> ReadOnly bloquea todos los cambios; Delete bloquea solo la eliminación",
+          "Los bloqueos se aplican al recurso del ámbito y a todos los hijos",
+          "Los bloqueos anulan RBAC – ni siquiera Propietario puede eliminar",
+          "+ Agregar"
+        ]
+      },
+      {
+        "titleEn": "1.6 — Tags",
+        "titleDe": "1.6 — Tags",
+        "titleAr": "1.6 — العلامات",
+        "titleEs": "1.6 — Etiquetas",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>RG > Tags</span> – show existing, add key:value",
+          "<span>Cost Management > Cost analysis</span> – group by tag",
+          "<span>Policy</span> – enforce Tags mandatory via <code>modify</code> or <code>deny</code>",
+          "<strong>Teach:</strong> Tags are metadata key:value pairs – not inherited automatically",
+          "Use cases: cost centre, environment, compliance",
+          "Max 50 tags per resource"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>RG > Tags</span> – vorhandene anzeigen, key:value hinzufügen",
+          "<span>Cost Management > Cost analysis</span> – nach Tag gruppieren",
+          "<span>Policy</span> – Pflichttags via <code>modify</code> oder <code>deny</code> erzwingen",
+          "<strong>Teach:</strong> Tags sind Metadaten – werden nicht automatisch vererbt",
+          "Anwendungsfälle: Kostenstelle, Umgebung, Compliance",
+          "Maximal 50 Tags pro Ressource"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>RG > Tags</span> – إظهار الموجود، إضافة مفتاح:قيمة",
+          "<span>Cost Management > Cost analysis</span> – التجميع حسب الوسم",
+          "<span>Policy</span> – فرض الوسوم إلزامياً عبر <code>modify</code> أو <code>deny</code>",
+          "<strong>Teach:</strong> العلامات هي أزواج بيانات key:value – غير موروثة automatically",
+          "حالات الاستخدام: مركز التكلفة، البيئة، الامتثال",
+          "الحد الأقصى 50 وسماً لكل مورد"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>RG > Etiquetas</span> – mostrar existentes, agregar clave:valor",
+          "<span>Gestión de costos > Análisis de costos</span> – group by tag",
+          "<span>Policy</span> – aplicar etiquetas obligatorias mediante <code>modify</code> o <code>deny</code>",
+          "<strong>Teach:</strong> Las etiquetas son pares clave:valor de metadatos – no se heredan automáticamente",
+          "Casos de uso: centro de costos, entorno, cumplimiento",
+          "Máximo 50 etiquetas por recurso"
+        ]
+      },
+      {
+        "titleEn": "1.7 — Resource groups and subscriptions",
+        "titleDe": "1.7 — Ressourcengruppen und Abonnements",
+        "titleAr": "1.7 — مجموعات الموارد والاشتراكات",
+        "titleEs": "1.7 — Grupos de recursos y suscripciones",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>All resources / Resource groups</span> – click into an RG",
+          "<span>Subscriptions</span> – Overview (id, Show, state, directory), Cost analysis, Quotas",
+          "<strong>Teach:</strong> RG = logical container; location ≠ resource location",
+          "Subscription types: Pay-As-You-Go, EA, MSDN, Free trial",
+          "Move resources: source + dest required; validation runs before move"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>All resources / Resource groups</span> – in RG klicken",
+          "<span>Subscriptions</span> – Übersicht (ID, Angebot, Status, Verzeichnis), Kostenanalyse, Kontingente",
+          "<strong>Teach:</strong> RG = logischer Container; Standort ≠ Ressourcenstandort",
+          "Abonnementtypen: Pay-As-You-Go, EA, MSDN, kostenlose Testversion",
+          "Ressourcen verschieben: Quelle + Ziel erforderlich; Validierung vor Verschiebung"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>All resources / Resource groups</span> – انقر على RG",
+          "<span>الاشتراكات</span> – نظرة عامة (المعرف، العرض، الحالة، الدليل)، تحليل التكلفة، الحصص",
+          "<strong>Teach:</strong> RG = حاوية منطقية؛ الموقع ≠ موقع المورد",
+          "أنواع الاشتراكات: الدفع حسب الاستخدام، EA، MSDN، نسخة تجريبية مجانية",
+          "نقل الموارد: المصدر + الوجهة مطلوبان؛ التحقق يعمل قبل النقل"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Todos los recursos / Grupos de recursos</span> – hacer clic en un RG",
+          "<span>Suscripciones</span> – Resumen (id, Mostrar, estado, directorio), Análisis de costos, Cuotas",
+          "<strong>Teach:</strong> RG = contenedor lógico; ubicación ≠ ubicación del recurso",
+          "Tipos de suscripción: Pago por uso, EA, MSDN, Prueba gratuita",
+          "Mover recursos: origen + destino requeridos; la validación se ejecuta antes del movimiento"
+        ]
+      },
+      {
+        "titleEn": "1.8 — Management Groups",
+        "titleDe": "1.8 — Verwaltungsgruppen",
+        "titleAr": "1.8 — مجموعات الإدارة",
+        "titleEs": "1.8 — Grupos de administración",
+        "docs": "https://learn.microsoft.com/en-us/azure/governance/management-groups/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Management Manage</span> – hierarchy: Tenant Root → child MGs → Subs → RG",
+          "Add an MG, assign a subscription; root MG can be renamed",
+          "<strong>Teach:</strong> Max 6 levels deep (excluding root)",
+          "RBAC + Policy inherit downward through MG hierarchy",
+          "Enables centralised governance across subscriptions"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Verwaltungsgruppen</span> – Hierarchie: Tenant Root → Unter-MGs → Subs → RG",
+          "MG hinzufügen, Abonnement zuweisen; Root-MG kann umbenannt werden",
+          "<strong>Teach:</strong> Maximal 6 Ebenen (ohne Root)",
+          "RBAC + Policy vererben sich durch die MG-Hierarchie nach unten",
+          "Ermöglicht zentrale Governance über mehrere Abonnements"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Management Groups</span> – التسلسل الهرمي: جذر المستأجر → MGs فرعية → اشتراكات → RG",
+          "إضافة MG، تعيين اشتراك؛ يمكن إعادة تسمية MG الجذر",
+          "<strong>Teach:</strong> 6 مستويات كحد أقصى (باستثناء الجذر)",
+          "RBAC + Policy تتورثان باتجاه تنازلي عبر التسلسل الهرمي لـ MG",
+          "تمكين الحوكمة المركزية عبر الاشتراكات"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Grupos de administración</span> – jerarquía: Raíz del inquilino → GAs hijas → Suscripciones → RG",
+          "Agregar an MG, assign a suscripción; root MG can be renamed",
+          "<strong>Teach:</strong> Máx. 6 niveles de profundidad (excluyendo raíz)",
+          "RBAC + Policy se heredan hacia abajo a través de la jerarquía de MG",
+          "Habilitars centralised governance across suscripcións"
+        ]
+      },
+      {
+        "titleEn": "1.9 — Cost management (budgets, alerts, Advisor)",
+        "titleDe": "1.9 — Kostenmanagement (Budgets, Warnungen, Advisor)",
+        "titleAr": "1.9 — إدارة التكاليف (الميزانيات، التنبيهات، Advisor)",
+        "titleEs": "1.9 — Gestión de costos (presupuestos, alertas, Advisor)",
+        "docs": "https://learn.microsoft.com/en-us/azure/cost-management-billing/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Cost Management + Billing > Budgets</span> – amount, scope, reset period, thresholds, action group",
+          "<span>Advisor recommendations</span> – cost, reliability, performance, security",
+          "<strong>Teach:</strong> Budget notifies only – does not enforce",
+          "Action groups: email, SMS, webhook, runbook",
+          "Advisor: right-size VMs, RI guidance, unallocated IPs, idle resources"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Cost Management + Billing > Budgets</span> – Betrag, Bereich, Zyklus, Schwellenwerte, Aktionsgruppe",
+          "<span>Advisor recommendations</span> – Kosten, Zuverlässigkeit, Leistung, Sicherheit",
+          "<strong>Teach:</strong> Budget benachrichtigt nur – erzwingt nicht",
+          "Aktionsgruppen: E-Mail, SMS, Webhook, Runbook",
+          "Advisor: VM-Größe anpassen, RI-Empfehlungen, ungenutzte IPs, Leerlaufressourcen"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Cost Management + Billing > Budgets</span> – المبلغ، النطاق، فترة إعادة التعيين، العتبات",
+          "<span>توصيات Advisor</span> – التكلفة، الموثوقية، الأداء، الأمان",
+          "<strong>Teach:</strong> الميزانية تخطر فقط – لا تفرض",
+          "مجموعات الإجراءات: بريد إلكتروني، رسالة نصية، webhook، runbook",
+          "Advisor: تحجيم VMs، إرشادات RI، عناوين IP غير مخصصة، موارد خاملة"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Gestión de costos + Billing > Presupuestos</span> – amount, scope, reset period, thresholds, action group",
+          "<span>Recomendaciones de Advisor</span> – costo, confiabilidad, rendimiento, seguridad",
+          "<strong>Teach:</strong> El presupuesto solo notifica – no fuerza",
+          "Grupos de acciones: correo electrónico, SMS, webhook, runbook",
+          "Advisor: redimensionar VMs, guía de RI, IPs no asignadas, recursos inactivos"
+        ]
+      }
+    ]
+  },
+  {
+    "nameEn": "Domain 2 — Storage",
+    "nameDe": "Bereich 2 — Speicher",
+    "nameAr": "المجال 2 — التخزين",
+    "nameEs": "Dominio 2 — Almacenamiento",
+    "weight": "15–20%",
+    "items": [
+      {
+        "titleEn": "2.1 — Create and configure storage accounts",
+        "titleDe": "2.1 — Speicherkonten erstellen und konfigurieren",
+        "titleAr": "2.1 — إنشاء وتكوين حسابات التخزين",
+        "titleEs": "2.1 — Crear y configurar cuentas de almacenamiento",
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Storage accounts > + Create</span> – name, region, Performance (Standard / Premium), Redundancy (LRS–GZRS)",
+          "<strong>Advanced:</strong> access tier, hierarchical namespace (Data Lake Gen2)",
+          "Post- Create: <span>Configuration</span> – replication, encryption",
+          "<span>Object replication</span> – copy async blob across regions",
+          "<strong>Teach:</strong> Globally unique name (3–24 chars)",
+          "Redundancy trade-offs: LRS, ZRS, GRS, RA-GRS, GZRS, RA-GZRS",
+          "SSE at rest: Microsoft-managed or CMK via Key Vault",
+          "Object replication requires blob versioning"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Storage accounts > + Create</span> – Name, Region, Leistung (Standard / Premium), Redundanz (LRS–GZRS)",
+          "<strong>Erweitert:</strong> Zugriffsebene, hierarchischer Namespace (Data Lake Gen2)",
+          "Nach Erstellung: <span>Configuration</span> – Replikation, Verschlüsselung",
+          "<span>Object replication</span> – asynchrones Blob-Kopieren zwischen Regionen",
+          "<strong>Teach:</strong> Global eindeutiger Name (3–24 Zeichen)",
+          "Redundanz: LRS, ZRS, GRS, RA-GRS, GZRS, RA-GZRS",
+          "SSE im Ruhezustand: Microsoft-verwaltet oder CMK über Key Vault",
+          "Objekt-Replikation erfordert Blob-Versionierung"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Storage accounts > + Create</span> – الاسم، المنطقة، الأداء (قياسي / ممتاز)، التكرار (LRS – GZRS)",
+          "<strong>متقدم:</strong> مستوى الوصول، مساحة الأسماء الهرمية (Data Lake Gen2)",
+          "بعد الإنشاء: <span>Configuration</span> – النسخ المتماثل، التشفير",
+          "<span>Object replication</span> – نسخ blob غير متزامن عبر المناطق",
+          "<strong>Teach:</strong> اسم فريد عالمياً (3–24 حرفاً)",
+          "مقايضات التكرار: LRS، ZRS، GRS، RA-GRS، GZRS، RA-GZRS",
+          "SSE للبيانات الخاملة: مدار من Microsoft أو CMK عبر Key Vault",
+          "يتطلب النسخ المتماثل للكائنات إصدار blob"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Storage accounts > + Crear</span> – nombre, región, Rendimiento (Estándar / Premium), Redundancia (LRS – GZRS)",
+          "<strong>Avanzado:</strong> nivel de acceso, espacio de nombres jerárquico (Data Lake Gen2)",
+          "Posterior a creación: <span>Configuración</span> – replicación, cifrado",
+          "<span>Replicación de objetos</span> – copia asincrónica de blobs entre regiones",
+          "<strong>Teach:</strong> Nombre único global (3–24 caracteres)",
+          "Compensaciones de redundancia: LRS, ZRS, GRS, RA-GRS, GZRS, RA-GZRS",
+          "SSE en reposo: administrado por Microsoft o CMK mediante Key Vault",
+          "La replicación de objetos requiere versionado de blobs"
+        ]
+      },
+      {
+        "titleEn": "2.2 — Configure storage access",
+        "titleDe": "2.2 — Speicherzugriff konfigurieren",
+        "titleAr": "2.2 — تكوين الوصول إلى التخزين",
+        "titleEs": "2.2 — Configurar acceso al almacenamiento",
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Storage > Networking</span> – Firewalls + VNets",
+          "<span>Access keys</span> – key1/key2, regenerate",
+          "<span>Shared access signatures</span> – generate SAS (service, permissions, expiry)",
+          "<span>Stored access policies</span> on a container",
+          "<strong>Teach:</strong> Default deny all public; VNet via Service endpoint",
+          "SAS types: service SAS vs account SAS",
+          "Stored access policy → revoke kills all linked SAS tokens",
+          "Access keys = full admin; two keys for zero-downtime rotation",
+          "Identity-based access: Azure Files via AD DS / Entra DS"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Storage > Networking</span> – Firewalls + VNets",
+          "<span>Access keys</span> – key1/key2, neu generieren",
+          "<span>Shared access signatures</span> – SAS generieren (Dienst, Berechtigungen, Ablauf)",
+          "<span>Stored access policies</span> auf einem Container",
+          "<strong>Teach:</strong> Standardmäßig alles öffentlich blockieren; VNet über Service Endpoint",
+          "SAS-Typen: Dienst-SAS vs Konto-SAS",
+          "Gespeicherte Zugriffsrichtlinie → Widerruf deaktiviert alle verknüpften SAS-Tokens",
+          "Zugriffsschlüssel = vollständige Admin-Rechte; zwei Schlüssel für Rotation ohne Ausfallzeit",
+          "Identitätsbasierter Zugriff: Azure Files über AD DS / Entra DS"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Storage > Networking</span> – Firewalls + VNets",
+          "<span>Access keys</span> – key1/key2, regenerate",
+          "<span>Shared access signatures</span> – generate SAS (service, permissions, expiry)",
+          "<span>Stored access policies</span> on a container",
+          "<strong>Teach:</strong> Denegar todo público por defecto; VNet mediante Service endpoint",
+          "SAS types: service SAS vs account SAS",
+          "Stored access policy → revoke kills all linked SAS tokens",
+          "Access keys = full admin; two keys for zero-downtime rotation",
+          "Identity-based access: Azure Files via AD DS / Entra DS"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Storage > Networking</span> – جدران الحماية + VNets",
+          "<span>مفاتيح الوصول</span> – key1/key2، إعادة إنشاء",
+          "<span>توقيعات الوصول المشتركة</span> – إنشاء SAS (الخدمة، الصلاحيات، انتهاء الصلاحية)",
+          "<span>سياسات الوصول المخزنة</span> على حاوية",
+          "<strong>Teach:</strong> رفض كل العامة افتراضياً؛ VNet عبر نقطة نهاية الخدمة",
+          "أنواع SAS: SAS خدمة مقابل SAS حساب",
+          "سياسة الوصول المخزنة → الإلغاء يلغي جميع رموز SAS المرتبطة",
+          "مفاتيح الوصول = إدارة كاملة؛ مفتاحان للتدوير بدون توقف",
+          "الوصول القائم على الهوية: Azure Files عبر AD DS / Entra DS"
+        ]
+      },
+      {
+        "titleEn": "2.3 — Blob storage (containers, tiers, lifecycle)",
+        "titleDe": "2.3 — Blob-Speicher (Container, Ebenen, Lebenszyklus)",
+        "titleAr": "2.3 — تخزين Blob (حاويات، مستويات، دورة حياة)",
+        "titleEs": "2.3 — Almacenamiento Blob (contenedores, niveles, ciclo de vida)",
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/blobs/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Storage > Containers</span> – create, access level (Private / Blob / Container)",
+          "<span>Change access tier</span> (Hot / Cool / Cold / Archive)",
+          "<span>Lifecycle management</span> – age-based rules for tier moves and deletion",
+          "<span>Soft delete</span> – enable, set retention days",
+          "<span>Versioning</span> – enable; overwrite shows multiple versions",
+          "<strong>Teach:</strong> Access levels: Private, Blob, Container",
+          "Tier cost trade-offs: Hot, Cool, Cold, Archive",
+          "Lifecycle: apply to current + previous versions",
+          "Versioning billed separately; enables restore",
+          "Soft delete protects against accidental deletion"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Storage > Containers</span> – erstellen, Zugriffsebene (Private / Blob / Container)",
+          "<span>Change access tier</span> (Hot / Cool / Cold / Archive)",
+          "<span>Lifecycle management</span> – altersbasierte Regeln für Ebenenwechsel und Löschung",
+          "<span>Soft delete</span> – aktivieren, Aufbewahrungstage festlegen",
+          "<span>Versioning</span> – aktivieren; Überschreiben zeigt mehrere Versionen",
+          "<strong>Teach:</strong> Zugriffsebenen: Private, Blob, Container",
+          "Kostenkompromisse der Ebenen: Hot, Cool, Cold, Archive",
+          "Lebenszyklus: gilt für aktuelle + vorherige Versionen",
+          "Versionierung wird separat abgerechnet; ermöglicht Wiederherstellung",
+          "Soft delete schützt vor versehentlichem Löschen"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Storage > Containers</span> – create, access level (Private / Blob / Container)",
+          "<span>Change access tier</span> (Hot / Cool / Cold / Archive)",
+          "<span>Lifecycle management</span> – age-based rules for tier moves and deletion",
+          "<span>Soft delete</span> – enable, set retention days",
+          "<span>Versioning</span> – enable; overwrite shows multiple versions",
+          "<strong>Teach:</strong> Niveles de acceso: Private (Privado), Blob, Container",
+          "Tier cost trade-offs: Hot, Cool, Cold, Archive",
+          "Lifecycle: apply to current + previous versions",
+          "Versioning billed separately; enables restore",
+          "Soft delete protects against accidental deletion"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Storage > Containers</span> – إنشاء، مستوى الوصول (خاص / Blob / حاوية)",
+          "<span>تغيير مستوى الوصول</span> (ساخن / بارد / بارد جداً / أرشيف)",
+          "<span>إدارة دورة الحياة</span> – قواعد قائمة على العمر لنقل المستويات والحذف",
+          "<span>الحذف الناعم</span> – تمكين، تعيين أيام الاحتفاظ",
+          "<span>الإصدارات</span> – تمكين؛ الكتابة فوق تظهر إصدارات متعددة",
+          "<strong>Teach:</strong> مستويات الوصول: خاص، Blob، حاوية",
+          "مقايضات تكلفة المستويات: ساخن، بارد، بارد جداً، أرشيف",
+          "دورة الحياة: تنطبق على الإصدارات الحالية + السابقة",
+          "الإصدارات تُفوتر بشكل منفصل؛ تتيح الاستعادة",
+          "الحذف الناعم يحمي من الحذف العرضي"
+        ]
+      },
+      {
+        "titleEn": "2.4 — Azure Files (shares, snapshots, soft delete)",
+        "titleDe": "2.4 — Azure Files (Freigaben, Snapshots, vorläufiges Löschen)",
+        "titleAr": "2.4 — Azure Files (مشاركات، لقطات، حذف مرن)",
+        "titleEs": "2.4 — Azure Files (recursos compartidos, instantáneas, eliminación suave)",
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/files/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Storage > File shares</span> – create share, set quota",
+          "<span>Snapshots</span> – take snapshot, delete file, restore",
+          "<span>Soft delete</span> – enable retention for file shares",
+          "button <strong>Mount script</strong> – copy for Windows/Linux",
+          "<strong>Teach:</strong> SMB 3.0 (internet + port 445) or NFS 4.1 (Premium + specific VNet)",
+          "Quota caps share size (max 100 TiB)",
+          "Snapshots = point-in-time read-only copies",
+          "Soft delete retains deleted shares for retention period"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Storage > File shares</span> – Freigabe erstellen, Kontingent festlegen",
+          "<span>Snapshots</span> – Snapshot erstellen, Datei löschen, wiederherstellen",
+          "<span>Soft delete</span> – Aufbewahrung für Dateifreigaben aktivieren",
+          "<strong>Mount script</strong> – Skript für Windows/Linux kopieren",
+          "<strong>Teach:</strong> SMB 3.0 (Internet + Port 445) oder NFS 4.1 (Premium + spezifisches VNet)",
+          "Kontingent begrenzt Freigabegröße (max 100 TiB)",
+          "Snapshots = Point-in-Time-Schreibschutzkopien",
+          "Vorläufiges Löschen behält gelöschte Freigaben für Aufbewahrungszeitraum"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Storage > File shares</span> – إنشاء مشاركة، تعيين الحصة",
+          "<span>اللقطات</span> – أخذ لقطة، حذف ملف، استعادة",
+          "<span>الحذف الناعم</span> – تمكين الاحتفاظ لمشاركات الملفات",
+          "زر <strong>نص التحميل</strong> – نسخ لأنظمة Windows/Linux",
+          "<strong>Teach:</strong> SMB 3.0 (إنترنت + منفذ 445) أو NFS 4.1 (ممتاز + VNet محدد)",
+          "الحصة تحد حجم المشاركة (100 TiB كحد أقصى)",
+          "اللقطات = نسخ للقراءة فقط في نقطة زمنية محددة",
+          "الحذف الناعم يحتفظ بالمشاركات المحذوفة لفترة الاحتفاظ"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Storage > File shares</span> – crear recurso compartido, establecer cuota",
+          "<span>Instantáneas</span> – tomar instantánea, eliminar archivo, restaurar",
+          "<span>Eliminación suave</span> – habilitar retención para recursos compartidos de archivos",
+          "botón <strong>Script de montaje</strong> – copiar para Windows/Linux",
+          "<strong>Teach:</strong> SMB 3.0 (internet + puerto 445) o NFS 4.1 (Premium + VNet específica)",
+          "La cuota limita el tamaño del recurso compartido (máx. 100 TiB)",
+          "Las instantáneas son copias de solo lectura en un punto en el tiempo",
+          "La eliminación suave conserva los recursos compartidos eliminados durante el período de retención"
+        ]
+      },
+      {
+        "titleEn": "2.5 — Storage tools (Storage Explorer, AzCopy)",
+        "titleDe": "2.5 — Speichertools (Storage Explorer, AzCopy)",
+        "titleAr": "2.5 — أدوات التخزين (Storage Explorer، AzCopy)",
+        "titleEs": "2.5 — Herramientas de almacenamiento (Storage Explorer, AzCopy)",
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10",
+        "bulletsEn": [
+          "<strong>Portal / Tools:</strong> <span>Storage browser</span> – in-portal browse",
+          "<strong>Azure Storage Explorer</strong> – desktop GUI via connection string or key",
+          "<strong>AzCopy</strong> – CLI: <code>azcopy sync</code> for incremental blob sync",
+          "<strong>Teach:</strong> Storage Explorer = GUI; AzCopy = CLI bulk transfer",
+          "AzCopy features: scheduled transfers, resume on failure, md5 sync mode"
+        ],
+        "bulletsDe": [
+          "<strong>Portal / Tools:</strong> <span>Storage browser</span> – integrierter Portal-Browser",
+          "<strong>Azure Storage Explorer</strong> – Desktop-GUI über Verbindungszeichenfolge oder Schlüssel",
+          "<strong>AzCopy</strong> – CLI: <code>azcopy sync</code> für inkrementelle Blob-Synchronisation",
+          "<strong>Teach:</strong> Storage Explorer = GUI; AzCopy = CLI-Massenübertragung",
+          "AzCopy-Funktionen: geplante Übertragungen, Fortsetzung bei Fehlern, md5-Synchronisation"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة / الأدوات:</strong> <span>Storage browser</span> – تصفح داخل البوابة",
+          "<strong>Azure Storage Explorer</strong> – واجهة سطح مكتب عبر سلسلة اتصال أو مفتاح",
+          "<strong>AzCopy</strong> – CLI: <code>azcopy sync</code> لمزامنة blob تزايدية",
+          "<strong>Teach:</strong> Storage Explorer = واجهة رسومية؛ AzCopy = نقل بالجملة عبر CLI",
+          "ميزات AzCopy: نقل مجدول، استئناف عند الفشل، وضع مزامنة md5"
+        ],
+        "bulletsEs": [
+          "<strong>Portal / Herramientas:</strong> <span>Storage browser</span> – exploración en el portal",
+          "<strong>Azure Storage Explorer</strong> – GUI de escritorio mediante cadena de conexión o clave",
+          "<strong>AzCopy</strong> – CLI: <code>azcopy sync</code> para sincronización incremental de blobs",
+          "<strong>Teach:</strong> Storage Explorer = GUI; AzCopy = transferencia masiva por CLI",
+          "Características de AzCopy: transferencias programadas, reanudación en caso de fallo, modo de sincronización md5"
+        ]
+      }
+    ]
+  },
+  {
+    "nameEn": "Domain 3 — Compute",
+    "nameDe": "Bereich 3 — Compute",
+    "nameAr": "المجال 3 — حوسبة",
+    "nameEs": "Dominio 3 — Cómputo",
+    "weight": "20–25%",
+    "items": [
+      {
+        "titleEn": "3.1 — ARM templates and Bicep",
+        "titleDe": "3.1 — ARM-Vorlagen und Bicep",
+        "titleAr": "3.1 — قوالب ARM و Bicep",
+        "titleEs": "3.1 — Plantillas ARM y Bicep",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>RG > Add > Template deployment</span> – JSON structure: <code>$schema</code>, <code>contentVersion</code>, <code>parameters</code>, <code>resources</code>",
+          "<strong>Export template</strong> from a deployed resource",
+          "<strong>Bicep</strong> – show <code>.bicep</code> file + compiled ARM; deploy via portal",
+          "<strong>Teach:</strong> ARM template sections: parameters, variables, resources, outputs",
+          "Modify: change location, add resource, add parameter",
+          "Idempotent deployment via portal, PowerShell, CLI, or Cloud Shell",
+          "<code>az bicep decompile</code> converts ARM to Bicep"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>RG > Add > Template deployment</span> – JSON-Struktur: <code>$schema</code>, <code>contentVersion</code>, <code>parameters</code>, <code>resources</code>",
+          "<strong>Export template</strong> aus einer bereitgestellten Ressource",
+          "<strong>Bicep</strong> – <code>.bicep</code>-Datei + kompiliertes ARM zeigen; über Portal bereitstellen",
+          "<strong>Teach:</strong> ARM-Vorlagenabschnitte: parameters, variables, resources, outputs",
+          "Ändern: Standort ändern, Ressource hinzufügen, Parameter hinzufügen",
+          "Idempotente Bereitstellung über Portal, PowerShell, CLI oder Cloud Shell",
+          "<code>az bicep decompile</code> konvertiert ARM in Bicep"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>RG > Access control (IAM)</span> – تبويب عرض الوصول",
+          "<strong>تصدير القالب</strong> من مورد منشور",
+          "<strong>Bicep</strong> – عرض ملف <code>.bicep</code> + ARM المجمع؛ النشر عبر البوابة",
+          "<strong>Teach:</strong> أقسام قالب ARM: parameters، variables، resources، outputs",
+          "تعديل: تغيير الموقع، إضافة مورد، إضافة معامل",
+          "نشر متطابق عبر البوابة، PowerShell، CLI أو Cloud Shell",
+          "<code>az bicep decompile</code> يحول ARM إلى Bicep"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>RG > Agregar > Implementación de plantilla</span> – estructura JSON: <code>$schema</code>, <code>parameters</code>, <code>resources</code>",
+          "<strong>Exportar plantilla</strong> desde un recurso implementado",
+          "<strong>Bicep</strong> – mostrar archivo <code>.bicep</code> + ARM compilado; implementar mediante portal",
+          "<strong>Teach:</strong> Secciones de plantilla ARM: parameters, variables, resources, outputs",
+          "Modificar: cambiar ubicación, agregar recurso, agregar parámetro",
+          "Implementación idempotente mediante portal, PowerShell, CLI o Cloud Shell",
+          "<code>az bicep decompile</code> convierte ARM a Bicep"
+        ]
+      },
+      {
+        "titleEn": "3.2 — Virtual machines",
+        "titleDe": "3.2 — Virtuelle Maschinen",
+        "titleAr": "3.2 — الآلات الافتراضية",
+        "titleEs": "3.2 — Máquinas virtuales",
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-machines/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>VMs > + Create</span> – Basics: image, size, auth, availability (zones / set)",
+          "<strong>Disks:</strong> OS disk type, data disks, encryption at host",
+          "<strong>Networking:</strong> VNet, subnet, public IP, NSG",
+          "Post-creation: <span>Size</span> (resize needs stop), <span>Disks</span> (add, caching), <strong>Move</strong>",
+          "<strong>Teach:</strong> Auth options: password vs SSH key (recommended for Linux)",
+          "Size families: General (B, Dsv3), Compute (F), Memory (E, M), GPU (NC, NV)",
+          "Managed disks: Standard HDD/SSD, Premium SSD, Ultra Disk; caching modes",
+          "Encryption at host: encrypts temp disks + cache",
+          "Move: within region cross-RG/sub; cross-region needs redeploy or ASR",
+          "Availability sets (2-3 FD, 5 UD) vs Availability zones (physically separate DCs)"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>VMs > + Create</span> – Grundeinstellungen: Image, Größe, Authentifizierung, Verfügbarkeit (Zonen / Gruppe)",
+          "<strong>Datenträger:</strong> Betriebssystem-Datenträgertyp, Datenträger, Verschlüsselung auf Host",
+          "<strong>Netzwerk:</strong> VNet, Subnetz, öffentliche IP, NSG",
+          "Nach Erstellung: <span>Size</span> (Größenänderung erfordert Stopp), <span>Disks</span> (hinzufügen, Caching), <strong>Move</strong>",
+          "<strong>Teach:</strong> Authentifizierung: Passwort vs SSH-Schlüssel (für Linux empfohlen)",
+          "Größenfamilien: General (B, Dsv3), Compute (F), Memory (E, M), GPU (NC, NV)",
+          "Verwaltete Datenträger: Standard HDD/SSD, Premium SSD, Ultra Disk; Caching-Modi",
+          "Verschlüsselung auf Host: verschlüsselt temporäre Datenträger + Cache",
+          "Verschieben: innerhalb der Region zwischen RG/Sub; regionsübergreifend mit ASR",
+          "Verfügbarkeitsgruppen (2-3 FD, 5 UD) vs Verfügbarkeitszonen (physisch getrennte Rechenzentren)"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>VMs > + Create</span> – Basics: image, size, auth, availability (zones / set)",
+          "<strong>Disks:</strong> OS disk type, data disks, encryption at host",
+          "<strong>Networking:</strong> VNet, subnet, public IP, NSG",
+          "Post-creation: <span>Size</span> (resize needs stop), <span>Disks</span> (add, caching), <strong>Move</strong>",
+          "<strong>Teach:</strong> Opciones de autenticación: contraseña vs clave SSH (recomendada para Linux)",
+          "Size families: General (B, Dsv3), Compute (F), Memory (E, M), GPU (NC, NV)",
+          "Managed disks: Standard HDD/SSD, Premium SSD, Ultra Disk; caching modes",
+          "Encryption at host: encrypts temp disks + cache",
+          "Move: within region cross-RG/sub; cross-region needs redeploy or ASR",
+          "Availability sets (2-3 FD, 5 UD) vs Availability zones (physically separate DCs)"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>VMs > + إنشاء</span> – الصورة، الحجم، المسؤول، الأقراص",
+          "<strong>الأقراص:</strong> نوع قرص النظام، أقراص البيانات، التشفير على المضيف",
+          "<strong>الشبكات:</strong> VNet، شبكة فرعية، IP عام، NSG",
+          "بعد الإنشاء: <span>الحجم</span> (تغيير الحجم يتطلب إيقاف)، <span>الأقراص</span> (إضافة، تخزين مؤقت)، <strong>نقل</strong>",
+          "<strong>Teach:</strong> خيارات المصادقة: كلمة المرور مقابل مفتاح SSH (موصى به لنظام Linux)",
+          "عائلات الحجم: عام (B، Dsv3)، حوسبة (F)، ذاكرة (E، M)، GPU (NC، NV)",
+          "الأقراص المدارة: HDD/SSD قياسي، SSD ممتاز، Ultra Disk؛ أوضاع التخزين المؤقت",
+          "التشفير على المضيف: تشفير الأقراص المؤقتة + ذاكرة التخزين المؤقت",
+          "النقل: عبر RG/اشتراك داخل المنطقة؛ عبر المناطق يتطلب إعادة نشر أو ASR",
+          "مجموعات التوفر (2-3 FD، 5 UD) مقابل مناطق التوفر (مراكز بيانات منفصلة مادياً)"
+        ]
+      },
+      {
+        "titleEn": "3.3 — VM Scale Sets",
+        "titleDe": "3.3 — VM-Skalierungsgruppen",
+        "titleAr": "3.3 — مجموعات توسع الآلات الافتراضية",
+        "titleEs": "3.3 — Conjuntos de escalado de máquinas virtuales",
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>VMSS > + Create</span> – orchestration (Uniform / Flexible), availability zones",
+          "<strong>Scaling:</strong> manual vs autoscale (CPU > 75% → +1, min 2 max 10)",
+          "<span>Instances</span> – running VMs list",
+          "<span>Scaling history</span> – graph instance count over time",
+          "<strong>Teach:</strong> VMSS = identical VM fleet + autoscale + load balancing",
+          "Autoscale: metric + operator + threshold + action (count or percent)",
+          "Cooldown period between scale events; overprovisioning for reliability"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>VMSS > + Create</span> – Orchestrierung (Uniform / Flexible), Verfügbarkeitszonen",
+          "<strong>Skalierung:</strong> manuell vs automatisch (CPU > 75% → +1, min 2 max 10)",
+          "<span>Instances</span> – Liste der laufenden VMs",
+          "<span>Scaling history</span> – Instanzanzahl im Zeitverlauf",
+          "<strong>Teach:</strong> VMSS = identische VM-Flotte + Autoskalierung + Lastausgleich",
+          "Autoskalierung: Metrik + Operator + Schwellenwert + Aktion (Anzahl oder Prozent)",
+          "Abkühlphase zwischen Skalierungsereignissen; Überbereitstellung für Zuverlässigkeit"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>VMSS > + Create</span> – التنظيم (Uniform / Flexible)، مناطق التوفر",
+          "<strong>التحجيم:</strong> يدوي مقابل تلقائي (CPU > 75% → +1، حد أدنى 2 حد أقصى 10)",
+          "<span>المثيلات</span> – قائمة VMs قيد التشغيل",
+          "<span>سجل التحجيم</span> – رسم بياني لعدد المثيلات بمرور الوقت",
+          "<strong>Teach:</strong> VMSS = أسطول VMs متطابقة + تحجيم تلقائي + موازنة تحميل",
+          "التحجيم التلقائي: مقياس + عامل + عتبة + إجراء (عدد أو نسبة)",
+          "فترة تبريد بين أحداث التحجيم؛ توفير زائد للموثوقية"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>VMSS > + Crear</span> – orquestación (Uniforme / Flexible), zonas de disponibilidad",
+          "<strong>Escalado:</strong> manual vs autoescalado (CPU > 75% → +1, mín. 2 máx. 10)",
+          "<span>Instancias</span> – lista de VMs en ejecución",
+          "<span>Historial de escalado</span> – gráfico de recuento de instancias en el tiempo",
+          "<strong>Teach:</strong> VMSS = flota de VMs idénticas + escalado automático + equilibrio de carga",
+          "Autoescalado: métrica + operador + umbral + acción (recuento o porcentaje)",
+          "Período de enfriamiento entre eventos de escalado; sobreaprovisionamiento para confiabilidad"
+        ]
+      },
+      {
+        "titleEn": "3.4 — Azure Container Registry",
+        "titleDe": "3.4 — Azure Container Registry",
+        "titleAr": "3.4 — Azure Container Registry",
+        "titleEs": "3.4 — Azure Container Registry",
+        "docs": "https://learn.microsoft.com/en-us/azure/container-registry/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>ACR > + Create</span> – SKU: Basic / Standard / Premium",
+          "<span>Repositories</span> – push image via <code>docker push</code>",
+          "<span>Tags</span> – image versions",
+          "<span>Webhooks</span> – trigger on push events",
+          "<span>Geo-replication</span> (Premium only)",
+          "<strong>Teach:</strong> Private Docker/OCI registry; SKU differences",
+          "Tag meaningfully, avoid bare <code>latest</code>",
+          "ACR Tasks = auto-build on git commit"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>ACR > + Create</span> – SKU: Basic / Standard / Premium",
+          "<span>Repositories</span> – Image per <code>docker push</code> übertragen",
+          "<span>Tags</span> – Image-Versionen",
+          "<span>Webhooks</span> – Auslöser bei Push-Ereignissen",
+          "<span>Geo-replication</span> (nur Premium)",
+          "<strong>Teach:</strong> Private Docker/OCI-Registrierung; SKU-Unterschiede",
+          "Aussagekräftige Tags verwenden, nicht <code>latest</code>",
+          "ACR Tasks = automatischer Build bei Git-Commit"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>ACR > + Create</span> – SKU: أساسي / قياسي / ممتاز",
+          "<span>المستودعات</span> – دفع الصورة عبر <code>docker push</code>",
+          "<span>الوسوم</span> – إصدارات الصورة",
+          "<span>خطافات الويب</span> – التشغيل عند أحداث الدفع",
+          "<span>النسخ المتماثل الجغرافي</span> (ممتاز فقط)",
+          "<strong>Teach:</strong> سجل Docker/OCI خاص؛ اختلافات SKU",
+          "وسم بمعنى، تجنب <code>latest</code> المجرد",
+          "ACR Tasks = بناء تلقائي عند تنفيذ git commit"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>ACR > + Crear</span> – SKU: Básico / Estándar / Premium",
+          "<span>Repositorios</span> – enviar imagen mediante <code>docker push</code>",
+          "<span>Etiquetas</span> – versiones de imagen",
+          "<span>Webhooks</span> – activar en eventos push",
+          "<span>Georreplicación</span> (solo Premium)",
+          "<strong>Teach:</strong> Registro Docker/OCI privado; diferencias de SKU",
+          "Etiquetar significativamente, evitar <code>latest</code> sin más",
+          "ACR Tasks = compilación automática al hacer commit en git"
+        ]
+      },
+      {
+        "titleEn": "3.5 — Container Instances and Container Apps",
+        "titleDe": "3.5 — Container Instances und Container Apps",
+        "titleAr": "3.5 — Container Instances و Container Apps",
+        "titleEs": "3.5 — Container Instances y Container Apps",
+        "docs": "https://learn.microsoft.com/en-us/azure/container-instances/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>ACI > + Create</span> – image, OS, size, public DNS label",
+          "<span>Containers</span> tab – logs and events",
+          "<span>Container Apps > + Create</span> – environment + app",
+          "<span>Revisions</span> – blue-green deployment",
+          "<span>Scale</span> – min/max replicas, HTTP autoscale rules",
+          "<strong>Teach:</strong> ACI = simplest container, no orchestration, billed per second",
+          "Container Apps = managed K8s-like platform (ingress, revisions, secrets, Dapr)",
+          "ACA scales from 0 (idle) to max; ACI supports GPU + VNet"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>ACI > + Create</span> – Image, OS, Größe, öffentliche DNS-Bezeichnung",
+          "<span>Containers</span>-Registerkarte – Protokolle und Ereignisse",
+          "<span>Container Apps > + Create</span> – Umgebung + App",
+          "<span>Revisions</span> – Blue-Green-Bereitstellung",
+          "<span>Scale</span> – min/max Replikate, HTTP-Autoskalierung",
+          "<strong>Teach:</strong> ACI = einfachster Container, keine Orchestrierung, pro Sekunde abgerechnet",
+          "Container Apps = verwaltete K8s-ähnliche Plattform (Ingress, Revisionen, Secrets, Dapr)",
+          "ACA skaliert von 0 (Leerlauf) bis max; ACI unterstützt GPU + VNet"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>ACI > + Create</span> – الصورة، نظام التشغيل، الحجم، تسمية DNS عامة",
+          "<span>الحاويات</span> تبويب – السجلات والأحداث",
+          "<span>Container Apps > + Create</span> – البيئة + التطبيق",
+          "<span>المراجعات</span> – نشر أزرق-أخضر",
+          "<span>التحجيم</span> – الحد الأدنى/الأقصى للنسخ المتماثلة، قواعد التحجيم التلقائي HTTP",
+          "<strong>Teach:</strong> ACI = أبسط حاوية، لا تنسيق، فواتير بالثانية",
+          "Container Apps = منصة مدارة شبيهة بـ K8s (ingress، مراجعات، أسرار، Dapr)",
+          "ACA تتحجيم من 0 (خامل) إلى الحد الأقصى؛ ACI تدعم GPU + VNet"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>ACI > + Crear</span> – imagen, SO, tamaño, etiqueta DNS pública",
+          "<span>Contenedores</span> pestaña – registros y eventos",
+          "<span>Container Apps > + Crear</span> – entorno + aplicación",
+          "<span>Revisiones</span> – implementación azul-verde",
+          "<span>Escalar</span> – réplicas mín/máx, reglas de autoescalado HTTP",
+          "<strong>Teach:</strong> ACI = contenedor más simple, sin orquestación, facturación por segundo",
+          "Container Apps = plataforma administrada tipo K8s (ingress, revisiones, secretos, Dapr)",
+          "ACA escala de 0 (inactivo) al máximo; ACI admite GPU + VNet"
+        ]
+      },
+      {
+        "titleEn": "3.6 — Azure App Service",
+        "titleDe": "3.6 — Azure App Service",
+        "titleAr": "3.6 — Azure App Service",
+        "titleEs": "3.6 — Azure App Service",
+        "docs": "https://learn.microsoft.com/en-us/azure/app-service/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>App Service Plans > + Create</span> – tier (F1/D1/B/S/P)",
+          "<span>App Service</span> – link to plan; <strong>Scale up</strong> (tier) vs <strong>Scale out</strong> (instances)",
+          "<span>Deployment Slots</span> – staging + swap = zero-downtime deploy",
+          "<span>Custom domains</span> – add hostname, validate via CNAME or A + verification ID",
+          "<span>Certificates</span> – upload or import from Key Vault; <span>TLS/SSL</span> – enforce HTTPS, min TLS version",
+          "<span>Backups</span> – schedule + retention (quota depends on tier)",
+          "<span>Networking</span> – outbound IPs, VNet integration (regional Standard / gateway Premium)",
+          "<strong>Teach:</strong> Plan = hosting compute. Scale up = bigger; scale out = more",
+          "Stacks: .NET, Java, Node, Python, PHP, Ruby",
+          "App Service Managed Certificate = free, auto-renew"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>App Service Plans > + Create</span> – Tarif (F1/D1/B/S/P)",
+          "<span>App Service</span> – mit Plan verknüpfen; <strong>Scale up</strong> (Tarif) vs <strong>Scale out</strong> (Instanzen)",
+          "<span>Deployment Slots</span> – Staging + Swap = Ausfallzeit-freie Bereitstellung",
+          "<span>Custom domains</span> – Hostnamen hinzufügen, über CNAME oder A + Verifikations-ID validieren",
+          "<span>Certificates</span> – hochladen oder aus Key Vault importieren; <span>TLS/SSL</span> – HTTPS erzwingen, minimale TLS-Version",
+          "<span>Backups</span> – Zeitplan + Aufbewahrung (Kontingent abhängig vom Tarif)",
+          "<span>Networking</span> – ausgehende IPs, VNet-Integration (regional Standard / Gateway Premium)",
+          "<strong>Teach:</strong> Plan = Hosting-Computeressourcen. Scale up = größer; Scale out = mehr",
+          "Stacks: .NET, Java, Node, Python, PHP, Ruby",
+          "App Service Managed Certificate = kostenlos, automatische Verlängerung"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>App Service Plans > + Create</span> – tier (F1/D1/B/S/P)",
+          "<span>App Service</span> – link to plan; <strong>Scale up</strong> (tier) vs <strong>Scale out</strong> (instances)",
+          "<span>Deployment Slots</span> – staging + swap = zero-downtime deploy",
+          "<span>Custom domains</span> – add hostname, validate via CNAME or A + verification ID",
+          "<span>Certificates</span> – upload or import from Key Vault; <span>TLS/SSL</span> – enforce HTTPS, min TLS version",
+          "<span>Backups</span> – schedule + retention (quota depends on tier)",
+          "<span>Networking</span> – outbound IPs, VNet integration (regional Standard / gateway Premium)",
+          "<strong>Teach:</strong> Plan = proceso de hospedaje. Escalar hacia arriba = más grande; escalar horizontal = más instancias",
+          "Stacks: .NET, Java, Node, Python, PHP, Ruby",
+          "App Service Managed Certificate = free, auto-renew"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>App Service Plans > + إنشاء</span> – المستوى (F1/D1/B/S/P)",
+          "<span>App Service</span> – الربط بالخطة؛ <strong>توسيع</strong> (المستوى) مقابل <strong>توسع</strong> (المثيلات)",
+          "<span>فتحات النشر</span> – اختبار + تبديل = نشر بدون توقف",
+          "<span>النطاقات المخصصة</span> – إضافة اسم مضيف، التحقق عبر CNAME أو A + معرف التحقق",
+          "<span>الشهادات</span> – رفع أو استيراد من Key Vault؛ <span>TLS/SSL</span> – فرض HTTPS، الحد الأدنى لإصدار TLS",
+          "<span>النسخ الاحتياطي</span> – جدولة + احتفاظ (الحصة تعتمد على المستوى)",
+          "<span>الشبكات</span> – عناوين IP صادرة، تكامل VNet (قياسي إقليمي / بوابة ممتاز)",
+          "<strong>Teach:</strong> الخطة = حوسبة استضافة. التوسيع = أكبر؛ التوسع = أكثر",
+          "الحزم: .NET، Java، Node، Python، PHP، Ruby",
+          "شهادة App Service المدارة = مجانية، تجديد تلقائي"
+        ]
+      }
+    ]
+  },
+  {
+    "nameEn": "Domain 4 — Virtual Networking",
+    "nameDe": "Bereich 4 — Virtuelle Netzwerke",
+    "nameAr": "المجال 4 — الشبكات الافتراضية",
+    "nameEs": "Dominio 4 — Redes Virtuales",
+    "weight": "15–20%",
+    "items": [
+      {
+        "titleEn": "4.1 — VNets, subnets, peering, UDRs, public IPs",
+        "titleDe": "4.1 — VNets, Subnetze, Peering, UDRs, öffentliche IPs",
+        "titleAr": "4.1 — الشبكات الافتراضية، الشبكات الفرعية، التوصيل، UDR، العناوين العامة",
+        "titleEs": "4.1 — VNets, subredes, emparejamiento, UDRs, IPs públicas",
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-network/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>VNets > + Create</span> – address space + subnets",
+          "<span>Peerings</span> – two-way VNet connection",
+          "<span>Public IPs</span> – Basic vs Standard SKU, Regional vs Global tier",
+          "<span>Route tables</span> – custom route (e.g. 0.0.0.0/0 → NVA), associate to subnet",
+          "<span>Network Watcher > IP flow verify</span> – test traffic between two endpoints",
+          "<strong>Connection troubleshooter</strong> – end-to-end diagnostics",
+          "<strong>Teach:</strong> Private CIDR; Azure reserves first 3 + last 1 IP per subnet",
+          "Peering is non-transitive (A-B, B-C does not connect A-C unless explicit)",
+          "UDRs: forced tunneling, NVA traffic, service chaining; BGP propagation",
+          "IP flow verify = #1 exam troubleshooting tool"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>VNets > + Create</span> – Adressraum + Subnetze",
+          "<span>Peerings</span> – bidirektionale VNet-Verbindung",
+          "<span>Public IPs</span> – Basic vs Standard SKU, Regional vs Global",
+          "<span>Route tables</span> – benutzerdefinierte Route (z.B. 0.0.0.0/0 → NVA), Subnetz zuordnen",
+          "<span>Network Watcher > IP flow verify</span> – Verkehr zwischen zwei Endpunkten testen",
+          "<strong>Connection troubleshooter</strong> – End-to-End-Diagnose",
+          "<strong>Teach:</strong> Private CIDR; Azure reserviert erste 3 + letzte 1 IP pro Subnetz",
+          "Peering ist nicht transitiv (A-B, B-C verbindet A-C nicht, außer explizit)",
+          "UDRs: Forced Tunneling, NVA-Verkehr, Service-Chaining; BGP-Propagation",
+          "IP flow verify = Tests-Tool Nr. 1 für die Prüfung"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>VNets > + Create</span> – address space + subnets",
+          "<span>Peerings</span> – two-way VNet connection",
+          "<span>Public IPs</span> – Basic vs Standard SKU, Regional vs Global tier",
+          "<span>Route tables</span> – custom route (e.g. 0.0.0.0/0 → NVA), associate to subnet",
+          "<span>Network Watcher > IP flow verify</span> – test traffic between two endpoints",
+          "<strong>Connection troubleshooter</strong> – end-to-end diagnostics",
+          "<strong>Teach:</strong> CIDR privado; Azure reserva las primeras 3 + la última IP por subred",
+          "Peering is non-transitive (A-B, B-C does not connect A-C unless explicit)",
+          "UDRs: forced tunneling, NVA traffic, service chaining; BGP propagation",
+          "IP flow verify = #1 exam troubleshooting tool"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>VNets > + إنشاء</span> – الاسم، المنطقة، مساحة العناوين (CIDR)",
+          "<span>الترابط</span> – اتصال VNet باتجاهين",
+          "<span>عناوين IP العامة</span> – SKU أساسي مقابل قياسي، المستوى الإقليمي مقابل العالمي",
+          "<span>جداول التوجيه</span> – مسار مخصص (مثال: 0.0.0.0/0 → NVA)، ربط بالشبكة الفرعية",
+          "<span>Network Watcher > IP flow verify</span> – اختبار حركة المرور بين نقطتي نهاية",
+          "<strong>مستكشف الاتصال</strong> – تشخيص شامل من البداية إلى النهاية",
+          "<strong>Teach:</strong> CIDR خاص؛ Azure يحفظ أول 3 + آخر 1 IP لكل شبكة فرعية",
+          "الترابط غير متعدٍ (A-B، B-C لا يربط A-C إلا إذا كان صريحاً)",
+          "UDR: النفق القسري، حركة مرور NVA، تسلسل الخدمات؛ نشر BGP",
+          "التحقق من تدفق IP = أداة استكشاف الأخطاء رقم 1 في الامتحان"
+        ]
+      },
+      {
+        "titleEn": "4.2 — NSGs and ASGs",
+        "titleDe": "4.2 — NSGs und ASGs",
+        "titleAr": "4.2 — NSGs و ASGs",
+        "titleEs": "4.2 — NSGs y ASGs",
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>NSGs > + Create</span> – inbound/outbound rules (source, port, destination, protocol, action, priority)",
+          "<span>ASGs > + Create</span> – logical VM grouping by tier",
+          "<span>NIC > Networking > Effective rules</span> – combined subnet + NIC NSGs",
+          "<strong>Teach:</strong> Stateful 5-tuple filter; max 1000 NSGs, 1000 rules per NSG",
+          "ASG = rule ref without per-VM updates; <strong>Deny always beats Allow</strong>",
+          "Effective rules = live view of applied rules for troubleshooting"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>NSGs > + Create</span> – eingehende/ausgehende Regeln (Quelle, Port, Ziel, Protokoll, Aktion, Priorität)",
+          "<span>ASGs > + Create</span> – logische VM-Gruppierung nach Ebene",
+          "<span>NIC > Networking > Effective rules</span> – kombinierte Subnetz+NIC-NSGs",
+          "<strong>Teach:</strong> Zustandsbehafteter 5-Tupel-Filter; max 1000 NSGs, 1000 Regeln pro NSG",
+          "ASG = Regelverweis ohne VM-Anpassung; <strong>Deny schlägt immer Allow</strong>",
+          "Effektive Regeln = Live-Ansicht der angewandten Regeln zur Fehlerbehebung"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>NSGs > + Create</span> – قواعد واردة/صادرة",
+          "<span>ASGs > + Create</span> – تجميع VMs منطقي حسب الطبقة",
+          "<span>NIC > Networking > Effective rules</span> – NSGs المجمعة للشبكة الفرعية + NIC",
+          "<strong>Teach:</strong> Stateful 5-tuple تصفية; max 1000 NSGs, 1000 rules per NSG",
+          "ASG = مرجع قاعدة بدون تحديثات لكل VM؛ <strong>الرفض يتغلب دائماً على السماح</strong>",
+          "القواعد الفعالة = عرض مباشر للقواعد المطبقة لاستكشاف الأخطاء"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>NSG > + Crear</span> – reglas de entrada/salida (origen, puerto, destino, protocolo, acción, prioridad)",
+          "<span>ASG > + Crear</span> – agrupación lógica de VMs por capa",
+          "<span>NIC > Red > Reglas efectivas</span> – NSGs combinados de subred + NIC",
+          "<strong>Teach:</strong> Filtro Stateful de 5 tuplas; máx. 1000 NSG, 1000 reglas por NSG",
+          "ASG = referencia de regla sin actualizaciones por VM; <strong>Denegar siempre prevalece sobre Permitir</strong>",
+          "Reglas efectivas = vista en vivo de reglas aplicadas para solucionar problemas"
+        ]
+      },
+      {
+        "titleEn": "4.3 — Azure Bastion",
+        "titleDe": "4.3 — Azure Bastion",
+        "titleAr": "4.3 — Azure Bastion",
+        "titleEs": "4.3 — Azure Bastion",
+        "docs": "https://learn.microsoft.com/en-us/azure/bastion/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Bastion > + Create</span> – SKU (Developer / Basic / Standard), requires <code>AzureBastionSubnet</code> (min /26)",
+          "VM without public IP → <strong>Connect > Bastion</strong> → browser RDP/SSH",
+          "<strong>Teach:</strong> PaaS RDP/SSH gateway; VM needs no public IP",
+          "TLS in browser; session activity logged to Azure Monitor"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Bastion > + Create</span> – SKU (Developer / Basic / Standard), benötigt <code>AzureBastionSubnet</code> (mind. /26)",
+          "VM ohne öffentliche IP → <strong>Connect > Bastion</strong> → Browser-RDP/SSH",
+          "<strong>Teach:</strong> PaaS-RDP/SSH-Gateway; VM benötigt keine öffentliche IP",
+          "TLS im Browser; Sitzungsaktivität wird in Azure Monitor protokolliert"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Bastion > + Create</span> – SKU (مطور / أساسي / قياسي)",
+          "VM بدون IP عام → <strong>اتصال > Bastion</strong> → RDP/SSH عبر المتصفح",
+          "<strong>Teach:</strong> بوابة RDP/SSH كخدمة؛ VM لا تحتاج IP عام",
+          "TLS في المتصفح؛ نشاط الجلسة مسجل في Azure Monitor"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Bastion > + Crear</span> – SKU (Developer / Básico / Estándar), requiere <code>AzureBastionSubnet</code> (mín. /26)",
+          "VM sin IP pública → <strong>Conectar > Bastion</strong> → RDP/SSH en navegador",
+          "<strong>Teach:</strong> Puerta de enlace PaaS RDP/SSH; la VM no necesita IP pública",
+          "TLS en el navegador; la actividad de la sesión se registra en Azure Monitor"
+        ]
+      },
+      {
+        "titleEn": "4.4 — Private Endpoints and Service Endpoints",
+        "titleDe": "4.4 — Private Endpunkte und Service Endpoints",
+        "titleAr": "4.4 — النقاط الخاصة ونقاط الخدمة",
+        "titleEs": "4.4 — Puntos finales privados y puntos finales de servicio",
+        "docs": "https://learn.microsoft.com/en-us/azure/private-link/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Private endpoints > + Create</span> – resource type, sub-resource, VNet/subnet, DNS private zone",
+          "<span>Storage > Networking > Firewalls + VNet > Add VNet</span> – Service endpoint",
+          "Contrast the two side by side",
+          "<strong>Teach:</strong> Service endpoints = VNet prefix route + firewall on public endpoint",
+          "Private endpoints = ENI with private IP inside VNet",
+          "SE = route rule on public endpoint. PE = private IP, accessible from on-prem via VPN/ER"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Private Endpunkte > + Create</span> – Ressourcentyp, Unterressource, VNet/Subnetz, private DNS-Zone",
+          "<span>Storage > Networking > Firewalls + VNet > Add VNet</span> – Service Endpoint",
+          "Beide nebeneinander vergleichen",
+          "<strong>Teach:</strong> Service Endpoints = VNet-Präfix-Route + Firewall auf öffentlichem Endpunkt",
+          "Private Endpoints = ENI mit privater IP im VNet",
+          "SE = Routenregel auf öffentlichem Endpunkt. PE = private IP, vom Standort aus via VPN/ER zugänglich"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Private endpoints > + Create</span> – نوع المورد، المورد الفرعي، VNet/شبكة فرعية",
+          "<span>Storage > Networking > Firewalls + VNet > Add VNet</span> – نقطة نهاية خدمة",
+          "مقارنة كلا النهجين جنباً إلى جنب",
+          "<strong>Teach:</strong> نقاط نهاية الخدمة = مسار بادئة VNet + جدار حماية على نقطة النهاية العامة",
+          "نقاط النهاية الخاصة = ENI مع IP خاص داخل VNet",
+          "SE = قاعدة مسار على نقطة عامة. PE = IP خاص، يمكن الوصول إليه من الموقع عبر VPN/ER"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Private endpoints > + Crear</span> – tipo de recurso, sub-recurso, VNet/subred, zona DNS privada",
+          "<span>Storage > Red > Cortafuegos + VNet > Agregar VNet</span> – Service Endpoint",
+          "Comparar ambos enfoques lado a lado",
+          "<strong>Teach:</strong> Service Endpoints = ruta de prefijo VNet + cortafuegos en punto final público",
+          "Private Endpoints = ENI con IP privada dentro de la VNet",
+          "SE = regla de ruta en punto final público. PE = IP privada, accesible desde on-prem mediante VPN/ER"
+        ]
+      },
+      {
+        "titleEn": "4.5 — Azure DNS",
+        "titleDe": "4.5 — Azure DNS",
+        "titleAr": "4.5 — Azure DNS",
+        "titleEs": "4.5 — Azure DNS",
+        "docs": "https://learn.microsoft.com/en-us/azure/dns/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>DNS zones > + Create</span> (Public or Private)",
+          "<strong>Public zone:</strong> NS records (delegation); add A, CNAME, MX, TXT records",
+          "<strong>Private DNS zone:</strong> linked to VNet, auto-register VM hostnames, split-brain DNS",
+          "<strong>Teach:</strong> Record types: A, AAAA, CNAME, MX, TXT, SOA; NS delegation",
+          "Private zone: resolvable only in linked/peered VNets; auto-registration of VM hostnames"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>DNS zones > + Create</span> (öffentlich oder privat)",
+          "<strong>Öffentliche Zone:</strong> NS-Einträge (Delegierung); A-, CNAME-, MX-, TXT-Einträge hinzufügen",
+          "<strong>Private DNS-Zone:</strong> mit VNet verknüpft, automatische VM-Registrierung, Split-Brain-DNS",
+          "<strong>Teach:</strong> Eintragstypen: A, AAAA, CNAME, MX, TXT, SOA; NS-Delegierung",
+          "Private Zone: nur in verknüpften/gepeerten VNets auflösbar; automatische VM-Registrierung"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>DNS zones > + Create</span> (عامة أو خاصة)",
+          "<strong>المنطقة العامة:</strong> سجلات NS (تفويض)؛ إضافة سجلات A وCNAME وMX وTXT",
+          "<strong>منطقة DNS خاصة:</strong> مرتبطة بـ VNet، تسجيل تلقائي لأسماء VM، DNS split-brain",
+          "<strong>Teach:</strong> أنواع السجلات: A، AAAA، CNAME، MX، TXT، SOA؛ تفويض NS",
+          "المنطقة الخاصة: قابلة للحل فقط في VNets مرتبطة؛ تسجيل تلقائي لأسماء VM"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Zonas DNS > + Crear</span> (Pública o Privada)",
+          "<strong>Zona pública:</strong> registros NS (delegación); agregar registros A, CNAME, MX, TXT",
+          "<strong>Zona DNS privada:</strong> vinculada a VNet, registro automático de nombres de VM, DNS split-brain",
+          "<strong>Teach:</strong> Record types: A, AAAA, CNAME, MX, TXT, SOA; NS delegation",
+          "Zona privada: resoluble solo en VNets vinculadas/emparejadas; registro automático de nombres de VM"
+        ]
+      },
+      {
+        "titleEn": "4.6 — Load balancer",
+        "titleDe": "4.6 — Lastausgleich",
+        "titleAr": "4.6 — موازن التحميل",
+        "titleEs": "4.6 — Balanceador de carga",
+        "docs": "https://learn.microsoft.com/en-us/azure/load-balancer/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>LB > + Create</span> – Public vs Internal, Basic vs Standard SKU",
+          "<strong>Backend pool:</strong> add VMs/VMSS",
+          "<strong>Health probe:</strong> TCP (3-way handshake) or HTTP (200 response)",
+          "<strong>Load balancing rule:</strong> frontend+backend IP/port, protocol, session persistence",
+          "Demo: stop backend VM → probe unhealthy → traffic stops; start → resumes",
+          "<strong>Teach:</strong> Standard LB = HA ports, outbound rules, zonal resilience",
+          "Health probe source IP 168.63.129.16 must NOT be blocked by NSG",
+          "Troubleshoot: check NSG probe traffic, backend health, L7 needs App Gateway"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>LB > + Create</span> – Public vs Internal, Basic vs Standard SKU",
+          "<strong>Backend pool:</strong> VMs/VMSS hinzufügen",
+          "<strong>Health probe:</strong> TCP (3-Wege-Handshake) oder HTTP (200-Antwort)",
+          "<strong>Lastausgleichsregel:</strong> Frontend+Backend-IP/Port, Protokoll, Sitzungspersistenz",
+          "Demo: Backend-VM stoppen → Sonde fehlgeschlagen → Verkehr stoppt; starten → fortsetzen",
+          "<strong>Teach:</strong> Standard LB = HA-Ports, ausgehende Regeln, zonale Resilienz",
+          "Health-Probe-Quell-IP 168.63.129.16 darf NICHT von NSG blockiert werden",
+          "Fehlerbehebung: NSG-Sonde, Backend-Integrität, L7 erfordert App Gateway"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>LB > + Create</span> – عام مقابل داخلي، SKU أساسي مقابل قياسي",
+          "<strong>مجموعة الخلفية:</strong> إضافة VMs/VMSS",
+          "<strong>فحص الصحة:</strong> TCP (مصافحة ثلاثية) أو HTTP (استجابة 200)",
+          "<strong>قاعدة موازنة التحميل:</strong> IP/منفذ الواجهة الأمامية والخلفية، البروتوكول، استمرارية الجلسة",
+          "تجربة: إيقاف VM خلفية → الفحص غير سليم → توقف حركة المرور؛ تشغيل → تستأنف",
+          "<strong>Teach:</strong> LB قياسي = منافذ HA، قواعد صادرة، مرونة نطاقية",
+          "يجب عدم حظر IP مصدر فحص الصحة 168.63.129.16 بواسطة NSG",
+          "استكشاف الأخطاء: التحقق من مرور فحص NSG، صحة الخلفية، L7 يحتاج App Gateway"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>LB > + Crear</span> – Público vs Interno, SKU Básico vs Estándar",
+          "<strong>Grupo de backend:</strong> agregar VMs/VMSS",
+          "<strong>Sonda de estado:</strong> TCP (handshake de 3 vías) o HTTP (respuesta 200)",
+          "<strong>Regla de equilibrio de carga:</strong> IP/puerto frontend+backend, protocolo, persistencia de sesión",
+          "Demostración: detener VM de backend → sonda no saludable → tráfico se detiene; iniciar → se reanuda",
+          "<strong>Teach:</strong> LB Estándar = puertos HA, reglas de salida, resiliencia zonal",
+          "La IP de origen de la sonda de estado 168.63.129.16 NO debe estar bloqueada por NSG",
+          "Solución de problemas: verificar tráfico de sonda NSG, estado de backend, L7 necesita App Gateway"
+        ]
+      }
+    ]
+  },
+  {
+    "nameEn": "Domain 5 — Monitor & Maintain",
+    "nameDe": "Bereich 5 — Überwachung & Wartung",
+    "nameAr": "المجال 5 — المراقبة والصيانة",
+    "nameEs": "Dominio 5 — Supervisión y Mantenimiento",
+    "weight": "10–15%",
+    "items": [
+      {
+        "titleEn": "5.1 — Azure Monitor metrics",
+        "titleDe": "5.1 — Azure Monitor-Metriken",
+        "titleAr": "5.1 — مقاييس Azure Monitor",
+        "titleEs": "5.1 — Métricas de Azure Monitor",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-platform-metrics",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Monitor > Metrics</span> – select scope, metric namespace, metric (e.g. Percentage CPU), aggregation (Avg/Min/Max/Sum/Count)",
+          "Add filter, split by dimension, pin to dashboard",
+          "<strong>Teach:</strong> Metrics = numerical time-series at 1-min granularity",
+          "Key exam metrics: CPU, disk bytes, network in/out, storage latency, queue length"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Monitor > Metrics</span> – Bereich auswählen, Metrik-Namespace, Metrik (z.B. CPU-Auslastung), Aggregation (Avg/Min/Max/Sum/Count)",
+          "Filter hinzufügen, nach Dimension aufteilen, an Dashboard anheften",
+          "<strong>Teach:</strong> Metriken = numerische Zeitreihen mit 1-Minuten-Granularität",
+          "Wichtige Prüfungsmetriken: CPU, Festplattenbytes, Netzwerk ein/aus, Speicherlatenz, Warteschlangenlänge"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Monitor > Metrics</span> – تحديد النطاق، المقياس، التجميع",
+          "إضافة تصفية، تقسيم حسب البعد، تثبيت على لوحة المعلومات",
+          "<strong>Teach:</strong> المقاييس = سلاسل زمنية رقمية بدقة دقيقة واحدة",
+          "مقاييس الامتحان الرئيسية: CPU، بايتات القرص، شبكة وارد/صادر، زمن استجابة التخزين، طول الطابور"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Supervisar > Métricas</span> – select scope, metric namespace, metric (e.g. Percentage CPU), aggregation (Avg/Min/Max/Sum/Count)",
+          "Agregar filtro, dividir por dimensión, fijar al panel",
+          "<strong>Teach:</strong> Métricas = series temporales numéricas con granularidad de 1 minuto",
+          "Métricas clave del examen: CPU, bytes de disco, red entrada/salida, latencia de almacenamiento, longitud de cola"
+        ]
+      },
+      {
+        "titleEn": "5.2 — Log Analytics and KQL",
+        "titleDe": "5.2 — Log Analytics und KQL",
+        "titleAr": "5.2 — Log Analytics و KQL",
+        "titleEs": "5.2 — Log Analytics y KQL",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Monitor > Logs</span> – KQL query editor: <code>StorageBlobLogs | where StatusCode == 403 | limit 10</code>",
+          "Schema explorer, autocomplete, time range selector",
+          "<span>Resource > Diagnostic settings</span> – send logs/metrics to Log Analytics",
+          "<strong>Teach:</strong> Per-resource diagnostic settings; different log categories per service",
+          "KQL basics: <code>where</code>, <code>project</code>, <code>extend</code>, <code>summarize</code>, <code>count</code>, <code>render timechart</code>"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Monitor > Logs</span> – KQL-Abfrageeditor: <code>StorageBlobLogs | where StatusCode == 403 | limit 10</code>",
+          "Schema-Explorer, Autovervollständigung, Zeitbereichsauswahl",
+          "<span>Resource > Diagnostic settings</span> – Protokolle/Metriken an Log Analytics senden",
+          "<strong>Teach:</strong> Diagnoseeinstellungen pro Ressource; verschiedene Protokollkategorien pro Dienst",
+          "KQL-Grundlagen: <code>where</code>, <code>project</code>, <code>extend</code>, <code>summarize</code>, <code>count</code>, <code>render timechart</code>"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Monitor > Metrics</span> – تحديد النطاق، المقياس، التجميع",
+          "مستكشف المخطط، الإكمال التلقائي، محدد النطاق الزمني",
+          "<span>المورد > Diagnostic settings</span> – إرسال السجلات/المقاييس إلى Log Analytics",
+          "<strong>Teach:</strong> إعدادات تشخيص لكل مورد؛ فئات سجل مختلفة لكل خدمة",
+          "أساسيات KQL: <code>where</code>، <code>project</code>، <code>extend</code>، <code>summarize</code>، <code>count</code>"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Monitor > Registros</span> – editor de consultas KQL",
+          "Explorador de esquemas, autocompletado, selector de intervalo de tiempo",
+          "<span>Recurso > Configuración de diagnóstico</span> – enviar registros/métricas a Log Analytics",
+          "<strong>Teach:</strong> Configuración de diagnóstico por recurso; categorías de registro diferentes por servicio",
+          "Fundamentos de KQL: <code>where</code>, <code>project</code>, <code>extend</code>, <code>summarize</code>, <code>count</code>"
+        ]
+      },
+      {
+        "titleEn": "5.3 — Alert rules, action groups, alert processing rules",
+        "titleDe": "5.3 — Warnungsregeln, Aktionsgruppen, Warnungsverarbeitungsregeln",
+        "titleAr": "5.3 — قواعد التنبيهات، مجموعات الإجراء، قواعد معالجة التنبيهات",
+        "titleEs": "5.3 — Reglas de alerta, grupos de acción, reglas de procesamiento de alertas",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Monitor > Alerts > + Create > Alert rule</span> – scope + condition (metric/log/activity log) + action group",
+          "Severity 0–4; static vs dynamic (ML anomaly) thresholds",
+          "<span>Alert processing rules</span> – suppress during maintenance window",
+          "<strong>Teach:</strong> Action groups: notification (email/SMS/push/voice) + automation (webhook/runbook/function/logic app)",
+          "Alert processing rules: suppress or override action groups at scale",
+          "Retry policy on failed notifications"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Monitor > Alerts > + Create > Alert rule</span> – Bereich + Bedingung (Metrik/Protokoll/Aktivitätsprotokoll) + Aktionsgruppe",
+          "Schweregrad 0–4; statische vs dynamische (ML-Anomalie) Schwellenwerte",
+          "<span>Alert processing rules</span> – Wartungsfenster unterdrücken",
+          "<strong>Teach:</strong> Aktionsgruppen: Benachrichtigung (E-Mail/SMS/Push/Sprache) + Automatisierung (Webhook/Runbook/Function/Logic App)",
+          "Warnungsverarbeitungsregeln: Unterdrückung oder Überschreibung von Aktionsgruppen",
+          "Wiederholungsrichtlinie bei fehlgeschlagenen Benachrichtigungen"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Monitor > Metrics</span> – تحديد النطاق، المقياس، التجميع",
+          "الخطورة 0–4؛ عتبات ثابتة مقابل ديناميكية (شذوذ ML)",
+          "<span>قواعد معالجة التنبيهات</span> – الكتم أثناء نافذة الصيانة",
+          "<strong>Teach:</strong> مجموعات إجراء: إشعار (بريد/SMS/دفع/صوت) + أتمتة (webhook/runbook/function/logic app)",
+          "قواعد معالجة التنبيهات: كتم أو تجاوز مجموعات الإجراءات على نطاق واسع",
+          "سياسة إعادة محاولة الإشعارات الفاشلة"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Monitor > Alertas > + Crear > Regla de alerta</span> – ámbito + condición (métrica, registro, registro de actividad) + grupo de acciones",
+          "Gravedad 0–4; umbrales estáticos vs dinámicos (anomalía ML)",
+          "<span>Reglas de procesamiento de alertas</span> – suprimir durante ventana de mantenimiento",
+          "<strong>Teach:</strong> Action groups: notification (email/SMS/push/voice) + automation (webhook/runbook/function/logic app)",
+          "Reglas de procesamiento de alertas: suprimir o anular grupos de acciones a escala",
+          "Retry política on failed notifications"
+        ]
+      },
+      {
+        "titleEn": "5.4 — Azure Monitor Insights (VM, Storage, Network)",
+        "titleDe": "5.4 — Azure Monitor Insights (VM, Storage, Netzwerk)",
+        "titleAr": "5.4 — Azure Monitor Insights (آلات، تخزين، شبكة)",
+        "titleEs": "5.4 — Azure Monitor Insights (VM, Almacenamiento, Red)",
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/insights/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Monitor > Insights > VM Insights</span> – map view (processes, ports, connections), performance view (CPU, memory, disk)",
+          "<strong>Storage insights</strong> – topology, latency breakdowns",
+          "<strong>Network insights</strong> – topology, traffic flows, connections",
+          "<strong>Teach:</strong> Pre-built workbook experiences per resource type",
+          "VM Insights requires Log Analytics agent/AMA + Dependency Agent for process map"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Monitor > Insights > VM Insights</span> – Kartenansicht (Prozesse, Ports, Verbindungen), Leistungsansicht (CPU, Arbeitsspeicher, Festplatte)",
+          "<strong>Storage insights</strong> – Topologie, Latenzaufschlüsselung",
+          "<strong>Network insights</strong> – Topologie, Verkehrsflüsse, Verbindungen",
+          "<strong>Teach:</strong> Vorgefertigte Workbook-Erfahrungen pro Ressourcentyp",
+          "VM Insights benötigt Log Analytics Agent/AMA + Dependency Agent für Prozesskarte"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Monitor > Metrics</span> – تحديد النطاق، المقياس، التجميع",
+          "<strong>رؤى التخزين</strong> – الطوبولوجيا، تحليل زمن الاستجابة",
+          "<strong>رؤى الشبكة</strong> – الطوبولوجيا، تدفقات حركة المرور، الاتصالات",
+          "<strong>Teach:</strong> تجارب workbook مبنية مسبقاً لكل نوع مورد",
+          "VM Insights يتطلب وكيل Log Analytics/AMA + وكيل التبعيات لخريطة العمليات"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Monitor > Insights > VM Insights</span> – vista de mapa (procesos, puertos, conexiones), vista de rendimiento (CPU, memoria, disco)",
+          "<strong>Storage insights</strong> – topología, desglose de latencia",
+          "<strong>Network insights</strong> – topología, flujos de tráfico, conexiones",
+          "<strong>Teach:</strong> Experiencias de workbook preconstruidas por tipo de recurso",
+          "VM Insights requiere agente de Log Analytics/AMA + agente de dependencias para mapa de procesos"
+        ]
+      },
+      {
+        "titleEn": "5.5 — Network Watcher and Connection Monitor",
+        "titleDe": "5.5 — Network Watcher und Connection Monitor",
+        "titleAr": "5.5 — Network Watcher و Connection Monitor",
+        "titleEs": "5.5 — Network Watcher y Connection Monitor",
+        "docs": "https://learn.microsoft.com/en-us/azure/network-watcher/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Network Watcher > Topology</span> – graphical network resource view",
+          "<strong>IP flow verify</strong> – src/dst IP, port, protocol → Allow/Deny + matched rule",
+          "<strong>Next hop</strong> – identifies routing path (UDR or system route)",
+          "<strong>NSG diagnostics (flow logs)</strong> – traffic logs to Log Analytics",
+          "<strong>Connection Monitor</strong> – probes from a VM to endpoint (latency, reachability)",
+          "<strong>Teach:</strong> IP flow verify = top exam troubleshooting tool",
+          "NSG flow logs for denied-traffic analysis; Connection Monitor = end-to-end probes"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Network Watcher > Topology</span> – grafische Netzwerkressourcenansicht",
+          "<strong>IP flow verify</strong> – Quell-/Ziel-IP, Port, Protokoll → Zulassen/Verweigern + passende Regel",
+          "<strong>Next hop</strong> – ermittelt Routing-Pfad (UDR oder Systemroute)",
+          "<strong>NSG diagnostics (flow logs)</strong> – Verkehrsprotokolle an Log Analytics",
+          "<strong>Connection Monitor</strong> – Sonden von einer VM zu einem Endpunkt (Latenz, Erreichbarkeit)",
+          "<strong>Teach:</strong> IP flow verify = wichtigstes Fehlerbehebungswerkzeug für die Prüfung",
+          "NSG-Flussprotokolle für Analyse verweigerten Verkehrs; Connection Monitor = End-to-End-Sonden"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Network Watcher > Topology</span> – عرض رسومي لموارد الشبكة",
+          "<strong>التحقق من تدفق IP</strong> – IP المصدر/الوجهة، المنفذ، البروتوكول → سماح/رفض + القاعدة المطابقة",
+          "<strong>القفزة التالية</strong> – تحديد مسار التوجيه (UDR أو مسار النظام)",
+          "<strong>تشخيصات NSG (سجلات التدفق)</strong> – سجلات حركة المرور إلى Log Analytics",
+          "<strong>مراقبة الاتصال</strong> – مسح من VM إلى نقطة نهاية (زمن الاستجابة، قابلية الوصول)",
+          "<strong>Teach:</strong> التحقق من تدفق IP = أفضل أداة لاستكشاف الأخطاء في الامتحان",
+          "سجلات تدفق NSG لتحليل حركة المرور المرفوضة؛ مراقبة الاتصال = مسح شامل"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Network Watcher > Topología</span> – vista gráfica de recursos de red",
+          "<strong>IP flow verify</strong> – IP origen/destino, puerto, protocolo → Permitir/Denegar + regla coincidente",
+          "<strong>Next hop</strong> – identifica ruta de enrutamiento (UDR o ruta del sistema)",
+          "<strong>Diagnósticos NSG (registros de flujo)</strong> – registros de tráfico a Log Analytics",
+          "<strong>Connection Monitor</strong> – sondas desde una VM a un punto final (latencia, alcanzabilidad)",
+          "<strong>Teach:</strong> IP flow verify = mejor herramienta de diagnóstico para el examen",
+          "Registros de flujo NSG para análisis de tráfico denegado; Connection Monitor = sondas de extremo a extremo"
+        ]
+      },
+      {
+        "titleEn": "5.6 — Azure Backup (Recovery Services Vault)",
+        "titleDe": "5.6 — Azure Backup (Recovery Services-Tresor)",
+        "titleAr": "5.6 — Azure Backup (خزنة Recovery Services)",
+        "titleEs": "5.6 — Azure Backup (almacén de Recovery Services)",
+        "docs": "https://learn.microsoft.com/en-us/azure/backup/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Recovery Services vault > + Create</span> – RG, name, <strong>same region</strong> as protected VMs",
+          "<span>Backup</span> – select VMs, choose policy (frequency + retention: daily/weekly/monthly/yearly)",
+          "<span>Backup items</span> – list of protected resources",
+          "Trigger <strong>on-demand backup</strong>",
+          "<strong>Restore:</strong> new VM, restore disk, replace existing",
+          "<strong>Teach:</strong> Vault backup storage is GRS + copy to paired region",
+          "Policy: 7 days to 99 years retention. Instant Restore Snapshot (1–5 days)",
+          "Cross-region restore possible when vault uses GRS"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Recovery Services-Tresor > + Create</span> – RG, Name, <strong>gleiche Region</strong> wie geschützte VMs",
+          "<span>Backup</span> – VMs auswählen, Richtlinie wählen (Häufigkeit + Aufbewahrung: täglich/wöchentlich/monatlich/jährlich)",
+          "<span>Backup items</span> – Liste der geschützten Ressourcen",
+          "<strong>On-Demand-Backup</strong> auslösen",
+          "<strong>Wiederherstellung:</strong> neue VM, Datenträger wiederherstellen, vorhandene ersetzen",
+          "<strong>Teach:</strong> Tresor-Backup-Speicher ist GRS + Kopie in gekoppelte Region",
+          "Richtlinie: 7 Tage bis 99 Jahre Aufbewahrung. Instant Restore Snapshot (1–5 Tage)",
+          "Regionsübergreifende Wiederherstellung möglich bei GRS-Tresor"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Recovery Services vault > + Create</span> – RG، الاسم، <strong>نفس المنطقة</strong> مثل VMs المحمية",
+          "<span>النسخ الاحتياطي</span> – تحديد VMs، اختيار السياسة (التكرار + الاحتفاظ)",
+          "<span>عناصر النسخ الاحتياطي</span> – قائمة الموارد المحمية",
+          "تشغيل <strong>نسخ احتياطي عند الطلب</strong>",
+          "<strong>الاستعادة:</strong> VM جديدة، استعادة قرص، استبدال الموجود",
+          "<strong>Teach:</strong> تخزين النسخ الاحتياطي للخزنة هو GRS + نسخة إلى المنطقة المقترنة",
+          "السياسة: احتفاظ من 7 أيام إلى 99 سنة. لقطة استعادة فورية (1–5 أيام)",
+          "الاستعادة عبر المناطق ممكنة عند استخدام الخزنة GRS"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Recovery Services vault > + Crear</span> – RG, nombre, <strong>misma región</strong> que las VMs protegidas",
+          "<span>Respaldo</span> – select VMs, choose política (frequency + retention: daily/weekly/monthly/yearly)",
+          "<span>Elementos de backup</span> – lista de recursos protegidos",
+          "Activar <strong>backup bajo demanda</strong>",
+          "<strong>Restaurar:</strong> nueva VM, restaurar disco, reemplazar existente",
+          "<strong>Teach:</strong> El almacenamiento de backup del vault es GRS + copia a la región emparejada",
+          "Política: 7 days to 99 years retention. Instant Restaurar Snapshot (1–5 days)",
+          "Restauración entre regiones posible cuando el almacén usa GRS"
+        ]
+      },
+      {
+        "titleEn": "5.7 — Backup Vault and Backup Reports",
+        "titleDe": "5.7 — Backup-Tresor und Backup-Berichte",
+        "titleAr": "5.7 — خزانة النسخ الاحتياطي وتقاريره",
+        "titleEs": "5.7 — Almacén de respaldo e informes de respaldo",
+        "docs": "https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Backup vault</span> (newer type) – for Azure Files, SQL/SAP HANA, VMware",
+          "<span>Backup center</span> – unified monitoring across Recovery Services + Backup vaults",
+          "<strong>Alerts</strong> – backup failure notifications via action groups",
+          "<strong>Reports</strong> – enable diagnostic settings → Log Analytics → Power BI or Monitor Workbook",
+          "<strong>Teach:</strong> Backup vault coexists with Recovery Services vault (not a replacement)",
+          "Reports visualise backup status, retention, storage consumed"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Sicherungstresor</span> (neuerer Typ) – für Azure Files, SQL/SAP HANA, VMware",
+          "<span>Backup center</span> – einheitliche Überwachung beider Tresortypen",
+          "<strong>Warnungen</strong> – Benachrichtigungen über fehlgeschlagene Sicherungen über Aktionsgruppen",
+          "<strong>Berichte</strong> – Diagnoseeinstellungen aktivieren → Log Analytics → Power BI oder Monitor Workbook",
+          "<strong>Teach:</strong> Backup-Tresor koexistiert mit Recovery Services-Tresor (kein Ersatz)",
+          "Berichte visualisieren Backup-Status, Aufbewahrung und Speicherverbrauch"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>خزنة النسخ الاحتياطي</span> (نوع أحدث) – لـ Azure Files، SQL/SAP HANA، VMware",
+          "<span>مركز النسخ الاحتياطي</span> – مراقبة موحدة عبر خزائن Recovery Services + Backup",
+          "<strong>التنبيهات</strong> – إشعارات فشل النسخ الاحتياطي عبر مجموعات الإجراءات",
+          "<strong>التقارير</strong> – تمكين إعدادات التشخيص → Log Analytics → Power BI أو Monitor Workbook",
+          "<strong>Teach:</strong> خزنة Backup تتعايش مع خزنة Recovery Services (ليست بديلاً)",
+          "التقارير تعرض حالة النسخ الاحتياطي والاحتفاظ والتخزين المستهلك"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Backup vault</span> (tipo más reciente) – para Azure Files, SQL/SAP HANA, VMware",
+          "<span>Backup center</span> – supervisión unificada entre Recovery Services + Backup vaults",
+          "<strong>Alertas</strong> – notificaciones de fallos de backup mediante grupos de acciones",
+          "<strong>Informes</strong> – habilitar configuración de diagnóstico → Log Analytics → Power BI o Monitor Workbook",
+          "<strong>Teach:</strong> Backup vault coexiste con Recovery Services vault (no es un reemplazo)",
+          "Los informes visualizan estado de backup, retención y almacenamiento consumido"
+        ]
+      },
+      {
+        "titleEn": "5.8 — Azure Site Recovery",
+        "titleDe": "5.8 — Azure Site Recovery",
+        "titleAr": "5.8 — Azure Site Recovery",
+        "titleEs": "5.8 — Azure Site Recovery",
+        "docs": "https://learn.microsoft.com/en-us/azure/site-recovery/",
+        "bulletsEn": [
+          "<strong>Portal:</strong> <span>Recovery Services vault > Site Recovery</span> – <span>Replicated items</span> – protected VMs list",
+          "Demo setup: source region → target region, target VNet, target storage",
+          "<strong>Test failover</strong> – isolated validation in target region (no DNS/hooks)",
+          "<strong>Failover:</strong> planned (graceful, no data loss) vs unplanned (crash/app-consistent)",
+          "<strong>Recovery Plan</strong> – pre-scripted ordered groups with automation runbooks",
+          "<strong>Teach:</strong> Mobility Service agent required on each protected VM",
+          "Failback = re-protect + fail back to source region (separate process)"
+        ],
+        "bulletsDe": [
+          "<strong>Portal:</strong> <span>Recovery Services-Tresor > Site Recovery</span> – <span>Replicated items</span> – Liste geschützter VMs",
+          "Einrichtung: Quellregion → Zielregion, Ziel-VNet, Zielspeicher",
+          "<strong>Test-Failover</strong> – isolierte Validierung in Zielregion (kein DNS/Hooks)",
+          "<strong>Failover:</strong> geplant (kontrolliert, kein Datenverlust) vs ungeplant (absturz-/anwendungskonsistent)",
+          "<strong>Recovery Plan</strong> – vorskriptierte geordnete Gruppen mit Automatisierungsrunbooks",
+          "<strong>Teach:</strong> Mobility Service-Agent auf jeder geschützten VM erforderlich",
+          "Failback = erneuter Schutz + Rückkehr zur Quellregion (separater Prozess)"
+        ],
+        "bulletsAr": [
+          "<strong>البوابة:</strong> <span>Recovery Services vault > + Create</span> – RG، الاسم، <strong>نفس المنطقة</strong> مثل VMs المحمية",
+          "إعداد تجريبي: المنطقة المصدر → المنطقة الهدف، VNet الهدف، تخزين الهدف",
+          "<strong>اختبار تجاوز الفشل</strong> – تحقق معزول في المنطقة الهدف (بدون DNS/خطافات)",
+          "<strong>تجاوز الفشل:</strong> مخطط (إيقاف آمن، لا فقدان بيانات) مقابل غير مخطط (متسق مع الانهيار أو متسق مع التطبيق)",
+          "<strong>خطة التعافي</strong> – مجموعات مرتبة مسبقة البرمجة مع runbooks الأتمتة",
+          "<strong>Teach:</strong> وكيل Mobility Service على كل VM محمية",
+          "العودة = إعادة الحماية + تجاوز الفشل عودة إلى المنطقة المصدر (عملية منفصلة)"
+        ],
+        "bulletsEs": [
+          "<strong>Portal:</strong> <span>Recovery Services vault > Site Recovery</span> – <span>Elementos replicados</span> – lista de VMs protegidas",
+          "Configuración de demostración: región de origen → región de destino, VNet de destino, almacenamiento de destino",
+          "<strong>Test conmutación por error</strong> – isolated validation in target region (no DNS/hooks)",
+          "<strong>Conmutación por error:</strong> planned (graceful, no data loss) vs unplanned (crash/app-consistent)",
+          "<strong>Plan de recuperación</strong> – grupos ordenados predefinidos con runbooks de automatización",
+          "<strong>Teach:</strong> Se requiere el agente Mobility Service en cada VM protegida",
+          "Failback = reproteger + conmutar por error de vuelta a la región de origen (proceso separado)"
+        ]
+      }
+    ]
+  }
+]
