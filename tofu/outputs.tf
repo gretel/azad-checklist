@@ -2,7 +2,7 @@
 
 output "fqdn" {
   description = "Full URL to visit"
-  value       = "http://${azurerm_public_ip.main.domain_name_label}.${azurerm_resource_group.main.location}.cloudapp.azure.com/"
+  value       = "https://${azurerm_public_ip.main.domain_name_label}.${azurerm_resource_group.main.location}.cloudapp.azure.com/"
 }
 
 output "public_ip" {

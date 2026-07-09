@@ -1,7 +1,29 @@
 #cloud-config
-package_upgrade: true
+package_update: true
 packages:
   - nginx
+  - openssl
 runcmd:
+  - mkdir -p /etc/nginx/ssl
+  - openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/nginx/ssl/azad.key -out /etc/nginx/ssl/azad.crt -subj "/CN=${fqdn}" -addext "subjectAltName=DNS:${fqdn}"
+  - |
+    cat > /etc/nginx/sites-available/default <<'NGINX'
+    server {
+        listen 80;
+        return 301 https://$host$request_uri;
+    }
+    server {
+        listen 443 ssl;
+        server_name _;
+        ssl_certificate /etc/nginx/ssl/azad.crt;
+        ssl_certificate_key /etc/nginx/ssl/azad.key;
+        root /var/www/html;
+        index index.html;
+        location / {
+            try_files $uri $uri/ =404;
+        }
+    }
+    NGINX
+  - nginx -t && systemctl reload nginx
   - systemctl enable nginx
   - systemctl start nginx

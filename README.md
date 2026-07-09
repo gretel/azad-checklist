@@ -28,8 +28,10 @@ Exam study checklist for Azure AZ-104.
 ```sh
 cd tofu
 tofu init
-tofu apply                     # provision VM + nginx
+tofu apply                     # provision VM + nginx + self-signed TLS
 ./upload.sh "$(tofu output -raw resource_group)" "$(tofu output -raw vm_name)"   # upload assets
+curl -k "$(tofu output -raw fqdn)"          # test HTTPS
+# Visit in browser, accept self-signed cert warning
 tofu destroy                   # tear down
 ```
 

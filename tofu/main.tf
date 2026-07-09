@@ -4,8 +4,9 @@
 #
 # Usage:
 #   tofu init                                                    # download providers
-#   tofu apply                                                   # create infra
+#   tofu apply -var dns_name=azad-checklist-tofu                 # create infra (custom DNS)
 #   ./upload.sh "$(tofu output -raw resource_group)" "$(tofu output -raw vm_name)"  # upload assets
+#   curl -k https://azad-checklist-tofu.westeurope.cloudapp.azure.com/  # verify
 #   tofu destroy                                                 # tear down
 
 terraform {
@@ -112,6 +113,18 @@ resource "azurerm_network_security_group" "main" {
     source_address_prefixes    = ["*"]
     destination_address_prefix = "*"
   }
+
+  security_rule {
+    name                       = "HTTPS"
+    priority                   = 110
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefixes    = ["*"]
+    destination_address_prefix = "*"
+  }
 }
 
 resource "azurerm_network_interface" "main" {
@@ -159,6 +172,8 @@ resource "azurerm_linux_virtual_machine" "main" {
     version   = "latest"
   }
 
-  # cloud-init installs nginx at boot
-  custom_data = base64encode(templatefile("${path.module}/cloud-init.tftpl", {}))
+  # cloud-init: install nginx, self-signed TLS cert, configure HTTPS
+  custom_data = base64encode(templatefile("${path.module}/cloud-init.tftpl", {
+    fqdn = "${local.suffix}.${var.location}.cloudapp.azure.com"
+  }))
 }
