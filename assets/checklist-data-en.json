@@ -1,0 +1,457 @@
+[
+  {
+    "weight": "20–25%",
+    "items": [
+      {
+        "docs": "https://learn.microsoft.com/en-us/entra/identity/users/",
+        "title": "1.1 — Manage Entra ID users and groups",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Entra ID > Users</span> – \"+ New user\" vs \"New guest user\"",
+          "<span>Groups</span> – Security vs M365, Assigned vs Dynamic membership",
+          "<span>Licenses > All products</span> – per-user license assignment",
+          "<span>Password reset</span> – enable SSPR for a group",
+          "Two user types: <strong>in-directory</strong> (employees, created in your tenant) vs <strong>B2B guest</strong> (external collaborators, invited from other tenants). Key exam distinction — guest users have a different UPN suffix (tenant.onmicrosoft.com#EXT#) and authenticate in their home tenant.",
+          "Group types: <strong>Security</strong> (permissions for resources) vs <strong>M365</strong> (collaboration access). Membership: <strong>Assigned</strong> (manual) vs <strong>Dynamic</strong> (auto based on user attributes like department or country). Dynamic groups require Entra ID P1 license — common exam gate.",
+          "License assignment fails if <strong>Usage Location</strong> not set first. Always set Usage Location before assigning licenses — this is a common exam oversight trap.",
+          "SSPR (Self-Service Password Reset): must be enabled per group. Configure authentication methods (email, phone, security questions) and set <strong>number of methods required</strong> (default 2). Registered users can reset without admin intervention. Exam tip: SSPR requires at least Entra ID P1."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/",
+        "title": "1.2 — Manage Entra ID roles",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Entra ID > Roles and administrators</span> – filter by category",
+          "Click <strong>Global Administrator</strong> – Assignments tab",
+          "Assign \"User Administrator\" at tenant scope",
+          "Built-in role categories: <strong>Global Administrator</strong> (full access, including billing), <strong>User Administrator</strong> (manage users/groups, reset passwords), <strong>Helpdesk Administrator</strong> (reset passwords for non-admins), <strong>Billing Administrator</strong> (subscriptions, invoices, support tickets). Exam expects you to know which role for which task.",
+          "<strong>PIM (Privileged Identity Management):</strong> Enables time-bound, just-in-time role activation with approval workflows. Users are <strong>eligible</strong> for a role, not permanently assigned. Requires Entra ID P2. Critical exam topic for least-privilege scenarios.",
+          "<strong>Key distinction:</strong> Entra ID roles manage access TO the directory itself (users, groups, app registrations). Azure RBAC (next item) manages access TO Azure resources (VMs, storage). They are <strong>completely separate</strong> — a Global Admin ≠ Owner of a subscription. This is one of the most commonly confused concepts on the exam.",
+          "<strong>Exam trap:</strong> Global Administrator <strong>≠</strong> Owner. Global Admin has full power over the Entra ID tenant (can reset any admin's password) but CANNOT deploy VMs unless they also have Azure RBAC Owner/Contributor on a subscription."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/role-based-access-control/",
+        "title": "1.3 — Azure RBAC — role assignments",
+        "bullets": [
+          "<strong>Portal:</strong> <span>RG > Access control (IAM)</span> – View access tab",
+          "Role assignment anatomy: <strong>Security Principal</strong> (who: user, group, service principal, managed identity) + <strong>Role</strong> (what: built-in like Contributor, Owner, Reader, or custom) + <strong>Scope</strong> (where: Management Group → Subscription → Resource Group → individual resource). All three are required — missing any means no access.",
+          "\"Check access\" tab: type a user/group name and see their <strong>effective permissions</strong> at the current scope. This resolves all inherited role assignments plus any deny assignments. Exam tip: use this FIRST when troubleshooting a permission issue before checking any other tool.",
+          "<strong>Inheritance:</strong> permissions flow DOWN the hierarchy: Management Group → Subscription → RG → resource. They are <strong>cumulative</strong> (added together) and evaluated at each level. A user with Reader on the Sub and Contributor on the RG has both everywhere below the RG.",
+          "<strong>Deny assignments</strong> (from Azure Blueprints or managed apps) override all allow permissions — even Owner cannot bypass a deny. This is the exam's favourite trick: 'User is Owner but still can't delete resource — why?' → a deny assignment from a managed application.",
+          "Best practice: assign roles <strong>at the highest scope possible</strong> (MG or Sub) for broad management, and <strong>narrowest scope</strong> needed for specific tasks. Use <strong>custom roles</strong> when built-in roles are too permissive."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/governance/policy/",
+        "title": "1.4 — Azure Policy",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Policy > Overview</span> – compliance state",
+          "<span>Definitions</span> – e.g. \"Allowed locations\" JSON definition",
+          "<span>Assignments</span> – scope, excluded resources, parameters",
+          "<span>Compliance</span> – drill into non-compliant resources",
+          "<strong>Definition vs Assignment:</strong> A policy <strong>definition</strong> is the rule (what to enforce, like \"resource locations must be West Europe\"). An <strong>assignment</strong> applies it to a scope (where: MG/Sub/RG). Both are needed — definition without assignment does nothing. This is the #1 concept students miss.",
+          "<strong>Effects (most to least restrictive):</strong> <code>deny</code> (block creation), <code>audit</code> (warn, non-blocking — use for existing resources before switching to deny), <code>append</code> (add tags/config on creation), <code>modify</code> (fix existing resources with remediation task), <code>deployIfNotExists</code> (auto-deploy a resource like a Log Analytics agent if missing), <code>auditIfNotExists</code> (alert if dependent resource missing). Exam: match the effect to the scenario.",
+          "<strong>Initiatives</strong> are groups of policy definitions applied together (e.g., ISO 27001, NIST SP 800-53 built-in initiatives). They simplify compliance at scale — assign one initiative instead of 50 individual policies.",
+          "<strong>Compliance view:</strong> see per-policy and per-resource compliance status with last evaluated timestamp. Non-compliant resources can be remediated with <code>modify</code> effect + remediation task. Exam expects you to know the difference between <strong>audit</strong> (compliance check only) and <strong>modify</strong> (compliance check + auto-fix)."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources",
+        "title": "1.5 — Resource locks",
+        "bullets": [
+          "<strong>Portal:</strong> <span>RG > Locks</span> – \"+ Add\": <strong>ReadOnly</strong> vs <strong>Delete</strong>",
+          "Demo: ReadOnly lock → deletion blocked; remove lock → succeeds",
+          "<strong>ReadOnly</strong> = no writes OR deletes at the scoped level and below. <strong>Delete</strong> = only prevents deletion (writes still allowed). Key exam distinction: ReadOnly also blocks all Azure CLI/PowerShell/API write operations, not just portal actions.",
+          "<strong>Critical exam concept:</strong> locks override RBAC. Even a user with <strong>Owner</strong> role CANNOT delete a resource if a Delete lock exists. The only way to remove the lock is through an Owner or a custom role with <code>Microsoft.Authorization/locks/delete</code> permission.",
+          "Locks apply to the scoped resource AND all child resources (inherited downward like RBAC). Common scenario: lock a Resource Group → all resources inside it are protected — individual resource locks aren't needed."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+        "title": "1.6 — Tags",
+        "bullets": [
+          "<strong>Portal:</strong> <span>RG > Tags</span> – show existing, add key:value",
+          "<span>Cost Management > Cost analysis</span> – group by tag",
+          "<span>Policy</span> – enforce Tags mandatory via <code>modify</code> or <code>deny</code>",
+          "Tags are <strong>metadata key:value pairs</strong> — they are NOT inherited from RG to resources automatically. To enforce inheritance, use Azure Policy with <code>modify</code> effect and a remediation task to copy RG tags to resources.",
+          "Key use cases: cost centre tracking (group by tag in Cost analysis), environment labelling (Dev/Test/Prod), compliance classification (DataClassification=Confidential), automation targeting (shut down VMs with Env=Test).",
+          "<strong>Limits:</strong> max 50 tags per resource. Tag names are case-insensitive but tag values are case-sensitive. Not all resource types support tags — check before designing a tagging strategy. Exam scenario: 'Tags not showing in cost report' → tags weren't applied when resources were created."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal",
+        "title": "1.7 — Resource groups and subscriptions",
+        "bullets": [
+          "<strong>Portal:</strong> <span>All resources / Resource groups</span> – click into an RG",
+          "<span>Subscriptions</span> – Overview (id, Show, state, directory), Cost analysis, Quotas",
+          "<strong>Resource Group = logical container, NOT a location.</strong> An RG stores metadata about its resources, but the RG can be in a different region than the resources inside it. Common exam trick: 'RG in West Europe, but VMs inside it created in North Europe' — this is perfectly valid.",
+          "<strong>Subscription types:</strong> Pay-As-You-Go (standard), Enterprise Agreement (EA, commit to spend), Free Trial (limited credit, expires), MSDN / Visual Studio (monthly Azure credits). Each subscription is a trust boundary — RBAC, Policy, and billing are scoped per subscription. Multiple subscriptions are organized under Management Groups for centralised governance.",
+          "Moving resources between RGs or subscriptions: source + destination must be specified. A <strong>validation</strong> runs first (check quotas, resource provider support, cross-subscription compatibility) before the actual move. The resource is locked during the move and cannot be modified. Exam tip: not all resource types support cross-subscription moves."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/governance/management-groups/",
+        "title": "1.8 — Management Groups",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Management groups</span> – hierarchy: Tenant Root → child MGs → Subs → RG",
+          "Add an MG, assign a subscription; root MG can be renamed",
+          "<strong>Hierarchy depth:</strong> max 6 levels (excluding the Tenant Root Group). This limit is important for designing governance — you cannot nest infinitely. Plan your hierarchy before implementing RBAC and Policy assignments.",
+          "<strong>Inheritance:</strong> RBAC assignments and Policy assignments applied at a Management Group propagate DOWN to all child MGs, subscriptions, and resources. This enables <strong>centralised governance</strong> — assign a policy denying certain VM SKUs at the MG level to affect thousands of subscriptions at once.",
+          "The <strong>Tenant Root Group</strong> exists by default and contains all subscriptions. By default, Global Administrators are <strong>User Access Administrators</strong> on the root MG, meaning they can elevate themselves to Owner of every subscription — an important security consideration. Best practice: restrict access to the root MG and remove the default root MG User Access Administrator assignment if not needed."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/cost-management-billing/",
+        "title": "1.9 — Cost management (budgets, alerts, Advisor)",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Cost Management + Billing > Budgets</span> – amount, scope, reset period, thresholds, action group",
+          "<span>Advisor recommendations</span> – cost, reliability, performance, security",
+          "<strong>Budgets only notify — they do NOT enforce.</strong> A budget tracks actual + forecasted spend against a threshold and triggers an action group when exceeded. If you need to automatically stop resources when budget is hit, you need an automation runbook triggered by the budget alert — Azure does NOT auto-shut down.",
+          "<strong>Action groups:</strong> the notification endpoint for budgets and alerts. Support email, SMS, push notification, voice call, webhook, Azure Function, Logic App, Runbook, ITSM. Multiple action types can be combined. Exam: configure action group first, THEN reference it in budget/alert.",
+          "<strong>Azure Advisor</strong> provides cost recommendations: right-size underutilised VMs, purchase Reserved Instances for consistent usage (up to 72% savings), delete unallocated public IPs, deallocate idle VMs. Also covers reliability (redundancy gaps), performance (skewed distributions), and security recommendations. Exam tip: Advisor is passive — it recommends, it doesn't enforce."
+        ]
+      }
+    ],
+    "name": "Domain 1 — Identities & Governance"
+  },
+  {
+    "weight": "15–20%",
+    "items": [
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create",
+        "title": "2.1 — Create and configure storage accounts",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Storage accounts > + Create</span> – name, region, Performance (Standard / Premium), Redundancy (LRS–GZRS)",
+          "<strong>Advanced:</strong> access tier, hierarchical namespace (Data Lake Gen2)",
+          "Post- Create: <span>Configuration</span> – replication, encryption",
+          "<span>Object replication</span> – copy async blob across regions",
+          "<strong>Naming:</strong> globally unique, 3–24 chars, lowercase alphanumeric only. The name becomes part of the endpoint (e.g., `mystorageaccount.blob.core.windows.net`). A failed name is the most common deployment error — always verify uniqueness.",
+          "<strong>Redundancy ladder (cost ↑, durability ↑):</strong> LRS (3 copies, single datacenter — cheapest, survives rack failure) → ZRS (3 DCs in one region, survives DC failure) → GRS (6 copies across paired regions, survives region-wide disaster) → GZRS (ZRS performance + geo-replication). Exam expects you to know: LRS ≠ ZRS ≠ GRS. RA-GRS and RA-GZRS add read access from secondary region — critical for disaster recovery scenarios.",
+          "<strong>SSE (Storage Service Encryption):</strong> all data is encrypted at rest by default with Microsoft-managed keys. Optional: <strong>CMK</strong> (Customer-managed keys in Key Vault) for compliance requirements, or <strong>double encryption</strong> at infrastructure level (256-bit + XTS-AES 256). Exam: SSE requires zero configuration — it's on by default.",
+          "<strong>Object replication</strong> copies blobs <strong>asynchronously</strong> across regions (requires blob versioning enabled). Replica is eventually consistent — not suitable for strict RPO requirements. Exam distinction: object replication ≠ failover. It's a background copy, not automatic failover."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security",
+        "title": "2.2 — Configure storage access",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Storage > Networking</span> – Firewalls + VNets",
+          "<span>Access keys</span> – key1/key2, regenerate",
+          "<span>Shared access signatures</span> – generate SAS (service, permissions, expiry)",
+          "<span>Stored access policies</span> on a container",
+          "<strong>Network security model:</strong> By default, all storage accounts accept traffic from any network (public access enabled). You can switch to <strong>deny all public</strong> and allow only specific VNets (via Service Endpoint or Private Endpoint) and specific public IP ranges via firewall rules. The exam expects you to know that firewall rules are IP-based but Service Endpoint uses the VNet identity, not IP.",
+          "<strong>SAS token types:</strong> <strong>Service SAS</strong> (scoped to one service — blob, queue, table, or file) vs <strong>Account SAS</strong> (scoped to one or more services). SAS tokens grant access by their permissions + expiry — they authenticate the <strong>token itself</strong>, not the user. This means a leaked SAS token gives anyone who possesses it the permissions it grants until it expires.",
+          "<strong>Stored access policy:</strong> attach to a container, queue, or table to define constraints (start time, expiry, permissions) that any SAS token linked to that policy inherits. <strong>Key exam concept:</strong> revoking the stored access policy invalidates ALL SAS tokens that reference it — no need to wait for individual token expiry.",
+          "<strong>Access keys</strong> grant full administrative access to the storage account — treat like passwords. Two keys (key1, key2) allow zero-downtime rotation: regenerate key1, update applications to use key2, then regenerate key1. Exam trap: regenerate an access key → all existing SAS tokens signed with that key break."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/blobs/",
+        "title": "2.3 — Blob storage (containers, tiers, lifecycle)",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Storage > Containers</span> – create, access level (Private / Blob / Container)",
+          "<span>Change access tier</span> (Hot / Cool / Cold / Archive)",
+          "<span>Lifecycle management</span> – age-based rules for tier moves and deletion",
+          "<span>Soft delete</span> – enable, set retention days",
+          "<span>Versioning</span> – enable; overwrite shows multiple versions",
+          "<strong>Access levels:</strong> <strong>Private</strong> (no anonymous access — need SAS or key), <strong>Blob</strong> (anonymous read for individual blobs, not listing), <strong>Container</strong> (anonymous read for all blobs + listing). Exam: only the container-level anonymous access allows listing — a common question scenario.",
+          "<strong>Tier economics:</strong> Hot (frequent access, highest storage cost, no retrieval fee), Cool (infrequent, 30-day minimum), Cold (rare, 90-day minimum), Archive (offline, 180-day minimum, highest retrieval fee and latency — hours to rehydrate). Archive requires manual rehydration before reading — cannot serve data on demand. Exam: match the access pattern to the correct tier.",
+          "<strong>Lifecycle management:</strong> rule-based (age + condition + action) automatic tiering. E.g.: 'Blobs not modified for 30 days → move to Cool; 90 days → move to Archive; 365 days → delete.' Rules can apply to <strong>both current and previous versions</strong> — versioning and lifecycle are complementary.",
+          "<strong>Critical distinction:</strong> <strong>Soft delete</strong> protects blobs/snapshots/containers from accidental deletion — deleted items are retained for a configurable period. <strong>Versioning</strong> preserves every overwrite as a separate version — enables restoring to any previous state. Soft delete + versioning together provide comprehensive data protection. Versioning is billed per version stored; soft delete retention is included in the storage cost."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/files/",
+        "title": "2.4 — Azure Files (shares, snapshots, soft delete)",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Storage > File shares</span> – create share, set quota",
+          "<span>Snapshots</span> – take snapshot, delete file, restore",
+          "<span>Soft delete</span> – enable retention for file shares",
+          "button <strong>Mount script</strong> – copy for Windows/Linux",
+          "<strong>Protocols:</strong> <strong>SMB 3.0</strong> (standard, requires port 445 over internet — some ISPs block this) or <strong>NFS 4.1</strong> (Premium tier only, requires a specific VNet — no public access). Exam scenario: 'Users can't connect to Azure Files over the internet' → check if port 445 is open; 'Linux clients can't mount NFS' → Premium tier required.",
+          "<strong>Quota</strong> caps the maximum size of a file share (up to 100 TiB with large file shares enabled). Quota is allocated on creation and can be increased later. It does NOT throttle or limit — it's a capacity ceiling.",
+          "<strong>Snapshots</strong> are point-in-time, read-only copies of the file share. They are incremental (only changes since last snapshot consume space). Used for file-level recovery — mount a snapshot as a separate drive and copy files back.",
+          "<strong>Soft delete</strong> for file shares: deleted shares are retained (with all content) for the configured retention period. This prevents accidental share deletion — a very common exam scenario for recovery."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10",
+        "title": "2.5 — Storage tools (Storage Explorer, AzCopy)",
+        "bullets": [
+          "<strong>Portal / Tools:</strong> <span>Storage browser</span> – in-portal browse",
+          "<strong>Azure Storage Explorer</strong> – desktop GUI via connection string or key",
+          "<strong>AzCopy</strong> – CLI: <code>azcopy sync</code> for incremental blob sync",
+          "<strong>Storage Explorer = GUI tool.</strong> Good for ad-hoc operations: browse, upload, download, copy between accounts. Supports connection strings, SAS tokens, and AzCopy integration for large transfers.",
+          "<strong>AzCopy = CLI/scheduled transfer tool.</strong> Key features: <code>azcopy sync</code> (incremental, respects last-modified timestamps), <code>azcopy copy</code> (with pattern matching), resume on failure (critical for large transfers), MD5 check mode (verifies file integrity). Exam: distinguish between Storage Explorer (manual GUI) and AzCopy (scriptable/resumable). Both are free."
+        ]
+      }
+    ],
+    "name": "Domain 2 — Implement and Manage Storage"
+  },
+  {
+    "weight": "20–25%",
+    "items": [
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/",
+        "title": "3.1 — ARM templates and Bicep",
+        "bullets": [
+          "<strong>Portal:</strong> <span>RG > Add > Template deployment</span> – JSON structure: <code>$schema</code>, <code>contentVersion</code>, <code>parameters</code>, <code>resources</code>",
+          "<strong>Export template</strong> from a deployed resource",
+          "<strong>Bicep</strong> – show <code>.bicep</code> file + compiled ARM; deploy via portal",
+          "<strong>ARM template sections:</strong> <code>parameters</code> (inputs), <code>variables</code> (computed values), <code>resources</code> (what to deploy), <code>outputs</code> (return values like connection strings). Missing section = missing functionality. Exam expects you to know the purpose of each section.",
+          "<strong>Modify a template:</strong> change <code>location</code> parameter to deploy to a different region, add a new <code>resource</code> block to deploy an additional resource, add a new <code>parameter</code> to make a value configurable. Template deployment is <strong>idempotent</strong> — running it multiple times produces the same result (no duplicate resources).",
+          "Deployment methods: portal (Template deployment blade), PowerShell (<code>New-AzResourceGroupDeployment</code>), CLI (<code>az deployment group create</code>), Cloud Shell (pre-authenticated, files persist). The exam tests that you know these methods exist, not the exact syntax.",
+          "<strong>Bicep</strong> is a domain-specific language that <strong>compiles to ARM JSON</strong>. Use <code>az bicep decompile</code> to convert an ARM template to Bicep, or <code>az bicep build</code> to go the other way. Bicep has simpler syntax (no <code>dependsOn</code> needed — automatic dependency detection). Exam: understand that Bicep is transpiled, not interpreted — it generates ARM JSON that Azure natively understands."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-machines/",
+        "title": "3.2 — Virtual machines",
+        "bullets": [
+          "<strong>Portal:</strong> <span>VMs > + Create</span> – Basics: image, size, auth, availability (zones / set)",
+          "<strong>Disks:</strong> OS disk type, data disks, encryption at host",
+          "<strong>Networking:</strong> VNet, subnet, public IP, NSG",
+          "Post-creation: <span>Size</span> (resize needs stop), <span>Disks</span> (add, caching), <strong>Move</strong>",
+          "<strong>Authentication:</strong> password (allowed for both Windows and Linux) vs <strong>SSH key pair</strong> (Linux only, recommended). Exam scenario: 'Linux VM won't accept password authentication on creation' → SSH key is specified in the ARM template, or the image defaults to SSH-only. Password auth can be enabled after creation via VM extensions.",
+          "<strong>Size families:</strong> General-purpose (B-series burstable for dev/test, Dsv3 for production), Compute-optimized (F-series, high CPU-to-memory ratio), Memory-optimized (E-series, M-series for databases/cache), GPU (NC, NV for rendering/ML). Exam: match workload type to the correct family. B-series has CPU credits — running out of credits = throttled performance.",
+          "<strong>Managed disk tiers:</strong> Standard HDD (cheap, slow — dev/test), Standard SSD (balanced), Premium SSD (consistent low latency — production), Ultra Disk (sub-millisecond latency — highest cost). <strong>Disk caching:</strong> ReadOnly (OS disks), ReadWrite (data disks with frequent writes), None (SQL Server and Premium disks — avoids cache coherency issues).",
+          "<strong>Availability comparison:</strong> <strong>Availability Sets</strong> (2–3 fault domains shared racks, 5 update domains scheduled maintenance — within one datacenter) vs <strong>Availability Zones</strong> (physically separate datacenters in the same region — 99.99% SLA). Exam: use Availability Sets for intra-DC resilience, use Availability Zones for region-level disaster protection. Only certain VM SKUs support zones.",
+          "<strong>VM move options:</strong> Same region (cross-RG or cross-sub within region) → use Azure Resource Mover or redeploy. Cross-region → needs <strong>Azure Site Recovery</strong> or manual redeploy with new image. A basic 'move' operation only works within the same region. This is a common trick question on the exam."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/",
+        "title": "3.3 — VM Scale Sets",
+        "bullets": [
+          "<strong>Portal:</strong> <span>VMSS > + Create</span> – orchestration (Uniform / Flexible), availability zones",
+          "<strong>Scaling:</strong> manual vs autoscale (CPU > 75% → +1, min 2 max 10)",
+          "<span>Instances</span> – running VMs list",
+          "<span>Scaling history</span> – graph instance count over time",
+          "<strong>VMSS = identical VM fleet managed as a group.</strong> Includes autoscaling (scale out/in based on metrics), load balancing (integrated with Azure Load Balancer or App Gateway), and automatic upgrades (rolling or blue-green). The exam expects you to know that VMSS is the recommended way to run multiple VMs for the same workload.",
+          "<strong>Autoscaling rules:</strong> metric + operator + threshold + action (count or percentage). Example: 'When avg CPU > 75% over 5 min → increase instance count by 1 (max 10)'. Requires a <strong>cooldown period</strong> (default 5 min) between scale events to prevent thrashing. <strong>Overprovisioning</strong> (default on) creates one extra instance to ensure at least the target count is available during provisioning failures.",
+          "<strong>Orchestration modes:</strong> <strong>Uniform</strong> (all VMs identical, network config replicated — older mode, fewer features) vs <strong>Flexible</strong> (VMSS manages a fleet of standard VMs with different SKUs, zones, and configurations — newer, recommended for most scenarios). Exam: Flexible mode has better compatibility with features like Azure Dedicated Host and proximity placement groups."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/container-registry/",
+        "title": "3.4 — Azure Container Registry",
+        "bullets": [
+          "<strong>Portal:</strong> <span>ACR > + Create</span> – SKU: Basic / Standard / Premium",
+          "<span>Repositories</span> – push image via <code>docker push</code>",
+          "<span>Tags</span> – image versions",
+          "<span>Webhooks</span> – trigger on push events",
+          "<span>Geo-replication</span> (Premium only)",
+          "<strong>ACR = private Docker/OCI image registry.</strong> SKU differences: Basic (10GB storage, low throughput — dev/test), Standard (100GB, moderate throughput — production), Premium (500GB + geo-replication + private endpoints + content trust — enterprise). Exam: choosing the right SKU for the scenario is a common question.",
+          "<strong>Tag meaningfully:</strong> avoid bare <code>latest</code> tag in production — use versioned tags like <code>myapp:v1.2.3</code>. ACR supports <strong>tag locking</strong> to prevent overwrites and <strong>repository-scoped tokens</strong> (Premium) for least-privilege access.",
+          "<strong>ACR Tasks</strong> = automated container builds in Azure. Trigger on source code commits, base image updates, or schedule. No Dockerfile needed on your machine — the build runs in Azure. Exam: ACR Tasks is the exam-relevant automation feature for container image building."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/container-instances/",
+        "title": "3.5 — Container Instances and Container Apps",
+        "bullets": [
+          "<strong>Portal:</strong> <span>ACI > + Create</span> – image, OS, size, public DNS label",
+          "<span>Containers</span> tab – logs and events",
+          "<span>Container Apps > + Create</span> – environment + app",
+          "<span>Revisions</span> – blue-green deployment",
+          "<span>Scale</span> – min/max replicas, HTTP autoscale rules",
+          "<strong>ACI (Azure Container Instances):</strong> simplest way to run a container — no orchestration, no cluster, billed per second. Good for batch jobs, simple web apps, and scenarios where you don't need Kubernetes complexity. Supports GPU instances and VNet integration.",
+          "<strong>Container Apps (ACA):</strong> managed Kubernetes-like platform without managing K8s itself. Features: revision-based deployment (blue-green, traffic splitting), built-in ingress (TLS termination, custom domains), Dapr integration for microservices, autoscaling from 0 (idle) to max replicas based on HTTP traffic or events.",
+          "<strong>Key distinction:</strong> Use ACI when you need a single container, quick, minimal config. Use ACA when you need scaling, revisions, ingress, and microservice patterns — but don't want to operate AKS. AKS is for full Kubernetes control. Exam: match workload to the right container service."
+        ]
+      }
+    ],
+    "name": "Domain 3 — Deploy and Manage Compute Resources"
+  },
+  {
+    "weight": "20–25%",
+    "items": [
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-network/",
+        "title": "4.1 — Virtual networks and peerings",
+        "bullets": [
+          "<strong>Portal:</strong> <span>VNets > + Create</span> – address space + subnets",
+          "<span>Peerings</span> – two-way VNet connection",
+          "<span>Public IPs</span> – Basic vs Standard SKU, Regional vs Global tier",
+          "<span>Route tables</span> – custom route (e.g. 0.0.0.0/0 → NVA), associate to subnet",
+          "<span>Network Watcher > IP flow verify</span> – test traffic between two endpoints",
+          "<strong>Connection troubleshooter</strong> – end-to-end diagnostics",
+          "<strong>VNet fundamentals:</strong> A VNet is an isolated network in Azure. When creating one, you define a <strong>private CIDR range</strong> (10.x.x.x, 172.16-31.x.x, or 192.168.x.x — these are RFC 1918 private ranges). <strong>Azure reserves 5 IPs per subnet</strong> (first 3 + last 1) for management — you can't assign them. Exam question: 'How many usable IPs in a /24 subnet?' → Answer: 251 (256 - 5 reserved).",
+          "<strong>Peering is NON-transitive.</strong> VNet A peered to VNet B and VNet B peered to VNet C does NOT mean A can reach C. Traffic must go through B as a hub, or create an explicit A-C peering. To make VNet B act as a hub/router, configure <strong>gateway transit</strong> or use a <strong>network virtual appliance (NVA)</strong> with routing. This is THE most misunderstood networking concept on the exam.",
+          "<strong>User Defined Routes (UDRs)</strong> override Azure's default system routes. Common use cases: <strong>forced tunneling</strong> (0.0.0.0/0 → NVA to inspect all internet-bound traffic), <strong>NVA traffic chaining</strong> (traffic between subnets goes through a firewall), <strong>service chaining</strong> (connect peered VNets through a hub NVA). UDRs can be overridden by BGP routes if you're using VPN/ExpressRoute with BGP propagation. Exam: know that UDR < BGP in priority.",
+          "<strong>IP flow verify</strong> is Network Watcher's most powerful troubleshooting tool. It tests a <strong>simulated packet</strong> between a source and destination (IP, port, protocol) and tells you: allowed or denied + which NSG rule matched. It's #1 on the exam for troubleshooting connectivity. Use before Connection Monitor (which needs real traffic flow)."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+        "title": "4.2 — NSGs and ASGs",
+        "bullets": [
+          "<strong>Portal:</strong> <span>NSGs > + Create</span> – inbound/outbound rules (source, port, destination, protocol, action, priority)",
+          "<span>ASGs > + Create</span> – logical VM grouping by tier",
+          "<span>NIC > Networking > Effective rules</span> – combined subnet + NIC NSGs",
+          "<strong>NSG = stateful 5-tuple firewall</strong> (source IP, source port, destination IP, destination port, protocol). <strong>Stateful</strong> means return traffic is automatically allowed. Limits: max 1000 NSGs per subscription, max 1000 rules per NSG. If you need more rules, split across multiple NSGs or use ASGs to simplify.",
+          "<strong>ASG (Application Security Group) = logical rule ref.</strong> Instead of writing a rule per VM's IP (which changes on restart), create an ASG for 'WebServers' and reference it in the NSG rule. Then add/remove VMs from the ASG — no rule changes needed. <strong>Critical: Deny rules always beat Allow rules regardless of priority numbers.</strong> If a Deny rule exists for a port, no Allow rule can override it.",
+          "<strong>Effective rules view</strong> combines the subnet-associated NSG (evaluated first) with the NIC-associated NSG (evaluated second). If subnet NSG denies traffic, NIC NSG can't allow it. This <strong>tiered evaluation</strong> is a common exam trick: 'I allowed port 443 on the NIC NSG but traffic is still blocked' → check subnet NSG first.",
+          "An NSG can be associated to a <strong>subnet</strong> (affects all VMs in the subnet) or to a <strong>single NIC</strong> (affects only that VM). One NIC can have an NSG even if the subnet already has one — both are evaluated. Best practice: use subnet NSG for broad rules and NIC NSG for VM-specific overrides."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/bastion/",
+        "title": "4.3 — Azure Bastion",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Bastion > + Create</span> – SKU (Developer / Basic / Standard), requires <code>AzureBastionSubnet</code> (min /26)",
+          "VM without public IP → <strong>Connect > Bastion</strong> → browser RDP/SSH",
+          "<strong>Bastion = PaaS RDP/SSH gateway</strong> — deploy it in your VNet, and any VM inside can be accessed via browser without a public IP, without a VPN, and without exposing RDP/SSH ports to the internet. Key exam concept: Bastion eliminates the need for jump-box VMs and reduces the attack surface.",
+          "<strong>No public IPs needed on target VMs</strong> — this is the #1 exam scenario. Bastion connects over TLS in the browser, authenticates via Entra ID, and all session activity is logged to Azure Monitor (audit logs of who connected to which VM when). It's provisioned in its own subnet <code>AzureBastionSubnet</code> (minimum /26) and billed per hour + per GB of data transfer.",
+          "SKU comparison: <strong>Developer</strong> (cheap, limited features — dev/test), <strong>Basic</strong> (standard, 2 instances for HA), <strong>Standard</strong> (scales to 50 instances, premium features like Kerberos auth and file transfer)."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/private-link/",
+        "title": "4.4 — Private Endpoints and Service Endpoints",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Private endpoints > + Create</span> – resource type, sub-resource, VNet/subnet, DNS private zone",
+          "<span>Storage > Networking > Firewalls + VNet > Add VNet</span> – Service endpoint",
+          "<strong>Service Endpoint (SE):</strong> adds the VNet's prefix to the Azure service's firewall. Traffic still uses the <strong>public endpoint IP</strong> but with a VNet identity tag. Works for Azure Storage, SQL DB, Cosmos DB, Key Vault. <strong>Key exam concept: SE does NOT remove from public internet — it just adds a firewall rule.</strong> A storage account with an SE can still be accessed from the internet if the firewall allows it.",
+          "<strong>Private Endpoint (PE):</strong> deploys a <strong>private NIC with a private IP from your VNet</strong> into the Azure service. The service's public endpoint is disabled effectively. Traffic never leaves your VNet (or peered VNets/on-prem via VPN/ER). PE uses <strong>Private DNS Zones</strong> to resolve the standard FQDN (e.g., `mystorage.blob.core.windows.net`) to the private IP.",
+          "<strong>Key difference:</strong> SE is a firewall rule on the public endpoint (don't block this VNet). PE is a network interface inside your VNet (no public endpoint access). PE supports on-premises connectivity via VPN/ExpressRoute; SE does not. PE is recommended for compliance and security-sensitive workloads. Exam: 'You need a storage account that is NOT accessible from the internet at all' → Private Endpoint, not Service Endpoint.",
+          "Private Endpoint supports <strong>most Azure services</strong> (Storage, SQL, Cosmos DB, Key Vault, ACR, App Services, Functions, etc.). Each PE is scoped to a specific <strong>sub-resource</strong> (e.g., blob, file, queue, table for storage). Creating a PE automatically creates a <strong>Private DNS Zone</strong> for name resolution."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/dns/",
+        "title": "4.5 — Azure DNS",
+        "bullets": [
+          "<strong>Portal:</strong> <span>DNS zones > + Create</span> (Public or Private)",
+          "<strong>Public zone:</strong> NS records (delegation); add A, CNAME, MX, TXT records",
+          "<strong>Private DNS zone:</strong> linked to VNet, auto-register VM hostnames, split-brain DNS",
+          "<strong>Record types:</strong> A (IPv4 → hostname), AAAA (IPv6), CNAME (alias → canonical name, can't point to another CNAME), MX (mail exchange), TXT (text/SPF verification), SOA (start of authority — zone metadata). NS records (name server delegation) are automatically created when you create a public zone.",
+          "<strong>DNS delegation:</strong> to use Azure DNS for your custom domain (e.g., 'contoso.com'), you create a public DNS zone in Azure and update your registar's NS records to point to Azure's name servers. Azure automatically provides the 4 NS server names. Until delegation is complete, DNS queries won't resolve — a common exam troubleshooting scenario.",
+          "<strong>Private DNS zone:</strong> only resolvable from VNets that are <strong>linked</strong> to the zone. Supports <strong>auto-registration</strong>: VMs in a linked VNet automatically get A records with their private IPs and hostnames. Useful for <strong>split-brain DNS</strong> (same domain name resolves to different IPs internally vs externally). Zone links can be configured for resolution only or resolution + auto-registration."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/load-balancer/",
+        "title": "4.6 — Load balancer",
+        "bullets": [
+          "<strong>Portal:</strong> <span>LB > + Create</span> – Public vs Internal, Basic vs Standard SKU",
+          "<strong>Backend pool:</strong> add VMs/VMSS",
+          "<strong>Health probe:</strong> TCP (3-way handshake) or HTTP (200 response)",
+          "<strong>Load balancing rule:</strong> frontend+backend IP/port, protocol, session persistence",
+          "Demo: stop backend VM → probe unhealthy → traffic stops; start → resumes",
+          "<strong>Standard LB (preferred):</strong> supports <strong>HA ports</strong> (load balance all ports with one rule — critical for NVAs), <strong>outbound SNAT rules</strong> (explicit control of outbound connectivity), <strong>zonal resilience</strong> (survives zone failure). <strong>Basic LB (legacy):</strong> no HA ports, no SLA, no availability zones, no outbound rules (uses default outbound access). Exam: always choose Standard unless the scenario explicitly constrains cost.",
+          "<strong>Health probe source IP 168.63.129.16</strong> is a well-known Azure IP used by load balancer probes. If your NSG blocks this IP, the load balancer marks all backend instances as unhealthy and stops forwarding traffic. This is the <strong>#1 load balancer troubleshooting scenario on the exam</strong> — 'My load balancer says all backends are unhealthy' → check NSG rules for 168.63.129.16.",
+          "<strong>Layer 4 vs Layer 7:</strong> Azure Load Balancer is L4 only (TCP/UDP) — it doesn't inspect HTTP headers, cookies, or paths. For L7 routing (URL-based, cookie-based affinity, SSL termination), you need <strong>Application Gateway</strong> or <strong>Front Door</strong>. Exam: 'I need to route requests to different backend pools based on the URL path' → App Gateway, not Load Balancer."
+        ]
+      }
+    ],
+    "name": "Domain 4 — Implement and Manage Virtual Networking"
+  },
+  {
+    "weight": "10–15%",
+    "items": [
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-platform-metrics",
+        "title": "5.1 — Azure Monitor metrics",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Monitor > Metrics</span> – select scope, metric namespace, metric (e.g. Percentage CPU), aggregation (Avg/Min/Max/Sum/Count)",
+          "Add filter, split by dimension, pin to dashboard",
+          "<strong>Metrics = numerical time-series data.</strong> Collected automatically at 1-minute granularity for most Azure resources. Retained for 93 days. You can't change the retention — for longer retention, export to Log Analytics or archive to storage. Exam: understand when to use Metrics (real-time, low-latency, platform-level) vs Logs (long-term, queryable, resource-level diagnostic data).",
+          "<strong>Key exam metrics by resource type:</strong> VMs → Percentage CPU, Disk Read/Write bytes/sec, Network In/Out; Storage → Queue length, Blob capacity, Latency (E2E vs Server); App Gateway → Bytes received, Total requests, Failed requests, Backend health. Metrics can be <strong>filtered</strong> (e.g., specific VM) or <strong>split by dimension</strong> (e.g., individual instance in a VMSS) and pinned to dashboards for real-time monitoring."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/",
+        "title": "5.2 — Log Analytics and KQL",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Monitor > Logs</span> – KQL query editor: <code>StorageBlobLogs | where StatusCode == 403 | limit 10</code>",
+          "Schema explorer, autocomplete, time range selector",
+          "<span>Resource > Diagnostic settings</span> – send logs/metrics to Log Analytics",
+          "<strong>Diagnostic settings</strong> must be configured PER RESOURCE — they are NOT automatic. Each resource has different log categories (e.g., Storage has StorageRead, StorageWrite, StorageDelete; AKS has kube-apiserver, kube-controller-manager). Without diagnostic settings, most resource logs are lost. This is the #1 exam oversight scenario: 'I deployed a VM but I can't see any logs in Log Analytics' → diagnostic settings were never configured.",
+          "<strong>KQL (Kusto Query Language) basics for the exam:</strong> <code>where</code> (filter rows), <code>project</code> (select columns), <code>extend</code> (calculate new column), <code>summarize</code> (group by + aggregation), <code>count</code> (row count), <code>render timechart</code> (visualise). A typical exam KQL query: <code>StorageBlobLogs | where StatusCode == 403 | project TimeGenerated, Uri, StatusCode | summarize count() by bin(TimeGenerated, 1h) | render timechart</code>",
+          "<strong>Log Analytics workspace</strong> is the container for log data. It has a <strong>pricing tier</strong> (Pay-as-you-go per GB, or Committed tiers for savings) and a <strong>retention setting</strong> (default 31 days, extendable to 2 years for most tiers, up to 7 years with archive). Data sent to Log Analytics can be accessed via KQL queries, used in alert rules, or visualised in workbooks."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/",
+        "title": "5.3 — Alert rules, action groups, alert processing rules",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Monitor > Alerts > + Create > Alert rule</span> – scope + condition (metric/log/activity log) + action group",
+          "Severity 0–4; static vs dynamic (ML anomaly) thresholds",
+          "<span>Alert processing rules</span> – suppress during maintenance window",
+          "<strong>Alert rule anatomy:</strong> <strong>scope</strong> (which resource to monitor), <strong>condition</strong> (metric/log/activity log signal + threshold), <strong>action group</strong> (who gets notified). All three are required. Severity levels 0 (Critical) through 4 (Verbose). <strong>Static thresholds</strong> (e.g., CPU > 90%) vs <strong>Dynamic thresholds</strong> (ML-based adaptive baseline — detects anomalies without manual threshold tuning).",
+          "<strong>Action groups</strong> are the notification/automation target. They support: email, SMS, push notification, voice call (notification), webhook, Azure Function, Logic App, Runbook, ITSM connection (automation). Action groups are <strong>shared across alert rules</strong> — create one 'Critical On-Call' action group and reference it from many alert rules. Exam: action group must exist BEFORE you create the alert rule — order matters.",
+          "<strong>Alert processing rules</strong> (formerly action rules) modify how alerts fire. Use cases: <strong>suppress alerts</strong> during planned maintenance windows (so the on-call engineer isn't woken at 2 AM for a known event), <strong>override action groups</strong> at scale (add an extra notification for all alerts in a subscription). They support time-based (specific hours) and scope-based conditions."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/azure-monitor/insights/",
+        "title": "5.4 — Azure Monitor Insights (VM, Storage, Network)",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Monitor > Insights > VM Insights</span> – map view (processes, ports, connections), performance view (CPU, memory, disk)",
+          "<strong>Storage insights</strong> – topology, latency breakdowns",
+          "<strong>Network insights</strong> – topology, traffic flows, connections",
+          "<strong>Insights = pre-built workbooks</strong> per resource type. They provide a curated monitoring experience without building dashboards from scratch. VM Insights shows: process map (which processes are running, which ports are open, which external connections exist) and performance charts (CPU, memory, disk, network). Storage Insights shows: account topology + latency breakdowns (E2E vs server latency — distinguishes network issues from storage service issues).",
+          "<strong>Prerequisite:</strong> VM Insights requires the <strong>Azure Monitor Agent (AMA)</strong> installed + the <strong>Dependency Agent</strong> for the process map feature. Without the Dependency Agent, you still get performance metrics but no process-level detail. This is a classic exam scenario: 'VM Insights shows performance charts but no process map' → Dependency Agent missing."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/network-watcher/",
+        "title": "5.5 — Network Watcher and Connection Monitor",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Network Watcher > Topology</span> – graphical network resource view",
+          "<strong>IP flow verify</strong> – src/dst IP, port, protocol → Allow/Deny + matched rule",
+          "<strong>Next hop</strong> – identifies routing path (UDR or system route)",
+          "<strong>NSG diagnostics (flow logs)</strong> – traffic logs to Log Analytics",
+          "<strong>Connection Monitor</strong> – probes from a VM to endpoint (latency, reachability)",
+          "<strong>IP flow verify = the exam's #1 troubleshooting tool.</strong> It simulates a packet and returns: allowed or denied, plus which NSG rule applied. Unlike Connection Monitor, it doesn't need real traffic — you can test before deploying anything. Use it to diagnose: 'Can VM A talk to VM B on port 443?' — the answer tells you if NSG, UDR, or routing is the problem.",
+          "<strong>Connection Monitor</strong> runs <strong>live probes</strong> from an Azure VM to any endpoint (Azure VM, on-prem server, internet URL). It measures latency, packet loss, and reachability. Unlike IP flow verify (simulation), it uses <strong>real traffic</strong>. Use it for ongoing monitoring after initial connectivity is verified with IP flow verify.",
+          "<strong>NSG flow logs:</strong> send <strong>accepted and denied traffic logs</strong> to a Log Analytics workspace. Use them to analyse: 'Why is traffic being denied?' — look at denied flow logs. Or 'Which IPs are connecting to my VM?' — look at accepted flow logs. Combined with Connection Monitor, this gives complete observability: simulation (IP flow verify), real-time (Connection Monitor), and historical (flow logs)."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/backup/",
+        "title": "5.6 — Azure Backup (Recovery Services Vault)",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Recovery Services vault > + Create</span> – RG, name, <strong>same region</strong> as protected VMs",
+          "<span>Backup</span> – select VMs, choose policy (frequency + retention: daily/weekly/monthly/yearly)",
+          "<span>Backup items</span> – list of protected resources",
+          "Trigger <strong>on-demand backup</strong>",
+          "<strong>Restore:</strong> new VM, restore disk, replace existing",
+          "<strong>Recovery Services vault must be in the SAME region as the protected VMs.</strong> This is the #1 exam mistake — students try to create the vault in a different region. The vault stores backup data but the backup process runs in the VM's region.",
+          "<strong>Default backup storage is GRS</strong> — data is replicated to the paired region for cross-region disaster protection. This also enables <strong>Cross-Region Restore</strong> (restore to the paired region if the primary is down). <strong>Instant Restore Snapshot:</strong> a <code>snapshot</code> is taken along with the vault transfer, kept for 1–5 days (configurable), enabling faster restores for recent backups.",
+          "<strong>Backup policy:</strong> retention from 7 days to 99 years, configurable daily/weekly/monthly/yearly points. You can have multiple policies for different backup requirements (e.g., critical VMs with daily+weekly+monthly, dev VMs with weekly only). Exam: know that backup ≠ disaster recovery — backup is for data protection/restoration, Site Recovery (next item) is for application failover."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview",
+        "title": "5.7 — Backup Vault and Backup Reports",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Backup vault</span> (newer type) – for Azure Files, SQL/SAP HANA, VMware",
+          "<span>Backup center</span> – unified monitoring across Recovery Services + Backup vaults",
+          "<strong>Alerts</strong> – backup failure notifications via action groups",
+          "<strong>Reports</strong> – enable diagnostic settings → Log Analytics → Power BI or Monitor Workbook",
+          "<strong>Backup vault (note: different from Recovery Services vault)</strong> — a newer resource type specifically for backing up Azure Files, SQL Server in Azure VMs, SAP HANA, and on-premises VMware workloads. It <strong>coexists with Recovery Services vault</strong> (the older type for VM backup) — they are NOT the same and NOT mutually exclusive. Exam: use Recovery Services vault for Azure VM backup; use Backup vault for everything else.",
+          "<strong>Backup Center</strong> provides a unified dashboard across both vault types — view all backups, check status, trigger restores from one place. Requires a Log Analytics workspace with diagnostic settings from both vault types.",
+          "<strong>Backup Reports</strong> visualise: backup item status (healthy/warning/critical), retention consumed, storage used across all protected items, and daily backup trends. Enable vault diagnostic settings → send to Log Analytics → access via predefined Power BI reports or an Azure Monitor Workbook. This is optional but useful for compliance auditing."
+        ]
+      },
+      {
+        "docs": "https://learn.microsoft.com/en-us/azure/site-recovery/",
+        "title": "5.8 — Azure Site Recovery",
+        "bullets": [
+          "<strong>Portal:</strong> <span>Recovery Services vault > Site Recovery</span> – <span>Replicated items</span> – protected VMs list",
+          "Demo setup: source region → target region, target VNet, target storage",
+          "<strong>Test failover</strong> – isolated validation in target region (no DNS/hooks)",
+          "<strong>Failover:</strong> planned (graceful shutdown, no data loss) vs unplanned (crash-consistent or app-consistent)",
+          "<strong>Recovery Plan</strong> – pre-scripted ordered groups with automation runbooks",
+          "<strong>Site Recovery = DR for Azure VMs (Azure-to-Azure).</strong> It continuously replicates VMs from a source region to a target region using the <strong>Site Recovery Mobility Service extension</strong> installed on each VM. Unlike Backup (point-in-time snapshots for data recovery), Site Recovery maintains a <strong>running replica</strong> ready to failover. Exam distinction: Backup = restore from snapshot; Site Recovery = failover to running replica.",
+          "<strong>Test failover</strong> runs an isolated validation — VMs spin up in the target region but without affecting production DNS or connecting to production resources. This is mandatory before a real failover. <strong>Planned failover</strong> = orderly shutdown of source, no data loss. <strong>Unplanned failover</strong> = source unavailable, latest crash-consistent or app-consistent point, potential data loss if RPO wasn't met.",
+          "<strong>Failback</strong> is a TWO-step process: (1) re-protect the target VMs back to the source region, (2) fail over from target back to source. This is NOT automatic — failback is a separate workflow after the primary region is restored. Exam: 'After an unplanned failover, how do you return to the original region?' → re-protect, then failover (failback).",
+          "<strong>Recovery Plans</strong> group VMs into ordered stages with pre- and post-actions. Each stage waits for all VMs in that group before proceeding. Actions can include Azure Automation runbooks (e.g., update DNS records after failover) and manual actions (pause for approval). This is how you orchestrate multi-tier application failover with dependencies (e.g., start DB tier first, then app tier, then web tier)."
+        ]
+      }
+    ],
+    "name": "Domain 5 — Monitor and Maintain Azure Resources"
+  }
+]

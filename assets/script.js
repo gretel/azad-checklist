@@ -69,10 +69,7 @@ function render() {
 }
 
 function pickLang(obj, prefix) {
-  return lang === "de" ? obj[prefix + "De"]
-    : lang === "es" ? obj[prefix + "Es"]
-    : lang === "ar" ? obj[prefix + "Ar"]
-    : obj[prefix + "En"];
+  return obj[prefix];
 }
 
 function updProgress(t, c) {
@@ -133,7 +130,12 @@ function setLang(l) {
   if (l === lang) return;
   lang = l;
   localStorage.setItem("az104-lang", l);
-  render();
+  // Force reload from server
+  var file = 'checklist-data-' + lang + '.json?v=' + Date.now();
+  fetch(file)
+    .then(r => r.json())
+    .then(d => { data = d; render(); })
+    .catch(e => { console.error('Failed to load ' + file, e); });
 }
 
 function collapseAll() {
@@ -190,8 +192,12 @@ if (localStorage.getItem("az104-theme") === "light") {
   document.getElementById("btnTheme").textContent = "\u25d1";
 }
 
-// Load data from external JSON (single source of truth)
-fetch('checklist-data.json')
-  .then(r => r.json())
-  .then(d => { data = d; render(); })
-  .catch(e => { console.error('Failed to load checklist-data.json', e); });
+// Load data per language
+function loadData() {
+  var file = 'checklist-data-' + lang + '.json?v=' + Date.now();
+  fetch(file)
+    .then(r => r.json())
+    .then(d => { data = d; render(); })
+    .catch(e => { console.error('Failed to load ' + file, e); });
+}
+loadData();

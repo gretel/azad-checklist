@@ -50,16 +50,13 @@ FQDN="$DNS.$LOCATION.cloudapp.azure.com"
 IP=$(az vm show --resource-group "$RG" --name "$VM" --show-details --query "publicIps" -o tsv)
 echo "    IP: $IP  URL: http://$FQDN/"
 
-# ── Upload all asset files ──
-echo "==> Uploading assets/* to /var/www/html/"
-for f in "$SRC/assets/"*; do
-    name=$(basename "$f")
-    B64=$(base64 < "$f" | tr -d '\n')
-    az vm run-command invoke \
-        --resource-group "$RG" --name "$VM" --command-id RunShellScript \
-        --output none \
-        --scripts "echo $B64 | base64 -d | sudo tee /var/www/html/$name > /dev/null && sudo chmod 644 /var/www/html/$name && echo $name OK"
-done
+# ── Upload all asset files as single tarball ──
+echo "==> Uploading assets/ to /var/www/html/"
+TARB64=$(cd "$SRC/assets" && tar cz --exclude='checklist-data.json' . | base64 | tr -d '\n')
+az vm run-command invoke \
+    --resource-group "$RG" --name "$VM" --command-id RunShellScript \
+    --output none \
+    --scripts "echo '${TARB64}' | base64 -d | sudo tar xz -C /var/www/html/ && sudo chmod 644 /var/www/html/*.html /var/www/html/*.css /var/www/html/*.js /var/www/html/*.json 2>/dev/null; echo 'Upload OK'"
 
 # ── Verify ──
 echo "==> Verifying"
