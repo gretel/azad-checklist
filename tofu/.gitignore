@@ -1,4 +1,4 @@
 .terraform/
+*.png.terraform.lock.hcl
 *.tfplan
 *.tfstate*
-*.png
