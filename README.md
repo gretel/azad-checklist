@@ -7,12 +7,14 @@ Exam study checklist application for Azure.
 ### Quick (shell script)
 
 ```sh
+# Requires BASH
+
 ./deploy.sh [location] [dns_name]
 ```
 
 ### Declarative (OpenTofu)
 
-[OpenTofu](https://opentofu.org) is an `HCL`-compatible `IaC` tool.
+[`OpenTofu`](https://opentofu.org/docs/intro/install/) is an `HCL`-compatible `IaC` tool.
 
 ```sh
 # Requires OpenTofu (or Terraform)
@@ -33,7 +35,7 @@ tofu destroy
 
 #### Dependency graph
 
-OpenTofu can export a `DOT` dependency graph and render it as `PNG`.
+`OpenTofu` can export a `DOT` dependency graph and render it as `PNG`.
 
 ```sh
 # Requires Graphviz (dot)
