@@ -1,19 +1,8 @@
 # AZ-104 Checklist
 
-Exam study checklist for Azure AZ-104.
+Exam study checklist application for Azure.
 
-```
-├── assets/
-│   ├── checklist-data.json
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-├── deploy.sh
-├── tofu/         # OpenTofu alternative (see below)
-└── README.md
-```
-
-## Deploy
+## Deployment
 
 ### Quick (shell script)
 
@@ -21,36 +10,36 @@ Exam study checklist for Azure AZ-104.
 ./deploy.sh [location] [dns_name]
 ```
 
-### OpenTofu (declarative)
+### Declarative (OpenTofu)
 
-[OpenTofu](https://opentofu.org) drop-in replacement. Teaches infra-as-code basics.
+[OpenTofu](https://opentofu.org) is an `HCL`-compatible `IaC` tool.
 
 ```sh
+# Requires OpenTofu (or Terraform)
+
 cd tofu
 tofu init
-tofu apply                     # provision VM + nginx + self-signed TLS
-./upload.sh "$(tofu output -raw resource_group)" "$(tofu output -raw vm_name)"   # upload assets
-curl -k "$(tofu output -raw fqdn)"          # test HTTPS
+tofu apply
+
+# Upload Assets
+./upload.sh "$(tofu output -raw resource_group)" "$(tofu output -raw vm_name)"
+
 # Visit in browser, accept self-signed cert warning
-tofu destroy                   # tear down
+curl -k "$(tofu output -raw fqdn)"
 
-#### Visualising the dependency graph
+# Short Lifecycle :)
+tofu destroy
+```
 
-OpenTofu can export a DOT dependency graph and render it as PNG.
+#### Dependency graph
+
+OpenTofu can export a `DOT` dependency graph and render it as `PNG`.
 
 ```sh
 # Requires Graphviz (dot)
-brew install graphviz
 
 cd tofu
 tofu graph | dot -Tpng > graph.png
-```
-
-`tofu graph` outputs every resource, provider, variable and their
-dependencies. `dot -Tpng` converts the DOT to a PNG image. Open
-graph.png to see how resources connect: why the subnet depends on
-the VNet, why the NIC needs both subnet and NSG, and how cloud-init
-flows into the VM.
 ```
 
 ## License
