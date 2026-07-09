@@ -11,7 +11,6 @@ if [ $# -ne 2 ]; then
     echo "Usage: $0 <resource-group> <vm-name>"
     echo ""
     echo "Example (run from this directory):"
-    # shellcheck disable=SC2016 # intentional: literal usage example
     echo '  ./upload.sh "$(tofu output -raw resource_group)" "$(tofu output -raw vm_name)"'
     exit 1
 fi
