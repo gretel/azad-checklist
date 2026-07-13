@@ -26,7 +26,7 @@ if [ -z "$VM_EXISTS" ]; then
     az group create --name "$RG" --location "$LOCATION" --output none
     az vm create \
         --resource-group "$RG" --name "$VM" --image Ubuntu2404 \
-        --size Standard_B1s --admin-username azureuser \
+        --size Standard_B2ats_v2 --admin-username azureuser \
         --generate-ssh-keys --public-ip-sku Standard \
         --custom-data '@-' << 'EOF'
 #cloud-config
